@@ -5,6 +5,7 @@ import Header from "../components/header";
 import Link from "next/link";
 import Footer from "../components/footer";
 import styled from "styled-components";
+import Test from "../components/test";
 
 const Description = styled.p`
   :hover {
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
             }}
           >
             <div>
-              <h2 className=" text-white text-2xl font-serif font-bold mt-[630px] ml-24 hover:text-[#C2AD74] ">
+              <h2 className=" text-white text-2xl font-serif font-bold mt-[550px] ml-24 hover:text-[#C2AD74] ">
                 House Holiday
               </h2>
               <Description className=" text-white h-8 w-[350px] ml-14">
@@ -46,6 +47,7 @@ const Home: NextPage = () => {
             </div>
           </a>
         </Link>
+        {/* <Test/> */}
       </main>
 
       <footer>

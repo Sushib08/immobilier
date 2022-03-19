@@ -22,7 +22,7 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
         </a>
       </Link>
       <div className=" flex justify-between mx-8">
-        <div className="mx-24 mt-4 text-gray-400 ">
+        <div className="mx-24 mt-4 text-gray-400 font-semibold ">
           {liens.map((liens) => (
             <Link key={liens.id} href={liens.link}>
               <a className=" text-3xl flex-row mx-6 hover:text-[#C2AD74]  ">{liens.name}</a>

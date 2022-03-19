@@ -52,9 +52,10 @@ const Description = styled.div`
 
 const Achats: FC = ({ ...props }) => {
   const achats = list();
+  
   const [searchParams, setSearchParams] = useState(achats);
   const [name, setName] = useState('');
-  const filter = (e : any) => {
+  const filter = (e: { target: { value: any; }; }) => {
     const keyword = e.target.value;
 
     if (keyword !== '') {
@@ -134,7 +135,7 @@ let data: IList[] = [
     title: "Maison 5 pièces",
     localisation: "Lyon",
     price: "250 000€",
-    path: "/image/maison1.jpg",
+    path: "/image/achats/maison1.jpg",
     details: "/house1",
   },
   {
@@ -142,7 +143,7 @@ let data: IList[] = [
     title: "Appart 3 pièces",
     localisation: "Lyon",
     price: "200 000€",
-    path: "/image/apart1.jpg",
+    path: "/image/achats/apart1.jpg",
     details: "/apart1",
   },
   {
@@ -150,7 +151,7 @@ let data: IList[] = [
     title: "Studio",
     localisation: "Toulon",
     price: "180 000€",
-    path: "/image/studio1.jpg",
+    path: "/image/achats/studio1.jpg",
     details: "/studio1",
   },
   {
@@ -158,7 +159,7 @@ let data: IList[] = [
     title: "Maison 4 pièces",
     localisation: "Paris",
     price: "300 000€",
-    path: "/image/maison2.jpg",
+    path: "/image/achats/maison2.jpg",
     details: "/house2",
   },
   {
@@ -166,7 +167,7 @@ let data: IList[] = [
     title: "Maison 4 pièces",
     localisation: "Bordeaux",
     price: "150 000€",
-    path: "/image/maison3.jpg",
+    path: "/image/achats/maison3.jpg",
     details: "/house3",
   },
   {
@@ -174,7 +175,7 @@ let data: IList[] = [
     title: "Maison 4 pièces",
     localisation: "Paris",
     price: "450 000€",
-    path: "/image/maison4.jpg",
+    path: "/image/achats/maison4.jpg",
     details: "/house6",
   },
   {
@@ -182,7 +183,7 @@ let data: IList[] = [
     title: "Maison 3 pièces",
     localisation: "Saint-Etienne",
     price: "200 000€",
-    path: "/image/maison5.jpg",
+    path: "/image/achats/maison5.jpg",
     details: "/house7",
   },
   {
@@ -190,7 +191,7 @@ let data: IList[] = [
     title: "Maison 5 pièces",
     localisation: "Nantes",
     price: "400 000€",
-    path: "/image/maison6.jpg",
+    path: "/image/achats/maison6.jpg",
     details: "/house8",
   },
 ];

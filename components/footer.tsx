@@ -11,7 +11,7 @@ const Footer: FC<IMenu> = ({ className, ...props }) => {
   const reseaux = Reseaux();
   return (
     <div className=" flex justify-between mx-16" {...props}>
-      <div className=" flex justify-between my-8 text-gray-400">
+      <div className=" flex justify-between my-8 text-gray-400 font-semibold">
         {liens.map((liens) => (
           <Link key={liens.id} href={liens.link}>
             <a className=" text-3xl flex-row mx-6 hover:text-[#C2AD74]">
