@@ -29,7 +29,7 @@ const History: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ARTHIMMO - Notre histoire</title>
+        <title>ORTHIMMO - Notre histoire</title>
       </Head>
 
       <header>

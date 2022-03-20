@@ -15,14 +15,14 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
           <Image
             priority
             src="/logoAgence.png"
-            height={100}
+            height={120}
             width={200}
             alt="Logo"
           />
         </a>
       </Link>
       <div className=" flex justify-between mx-8">
-        <div className="mx-24 mt-4 text-gray-400 font-semibold ">
+        <div className="mx-24 mt-8 font-semibold ">
           {liens.map((liens) => (
             <Link key={liens.id} href={liens.link}>
               <a className=" text-3xl flex-row mx-6 hover:text-[#C2AD74]  ">{liens.name}</a>
@@ -41,7 +41,7 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
             </a>
           </Link>
         </div>
-        <button className=" -mt-6">
+        <button className=" -mt-2">
           <Image priority src="/menu.svg" height={60} width={60} alt="menu" />
         </button>
       </div>

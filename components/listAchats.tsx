@@ -89,14 +89,14 @@ const Achats: FC = ({ ...props }) => {
           .map((achats) => (
             <Card key={achats.id}>
               <Link href={achats.details} passHref>
-                <Image
+                <a><Image
                   priority
                   src={achats.path}
                   height={320}
                   width={340}
                   alt="houses"
                   className=" overflow-hidden object-cover"
-                />
+                /></a>
               </Link>
               <Description>
                 <h2 className=" text-[25px] font-semibold">{achats.title}</h2>
@@ -136,7 +136,7 @@ let data: IList[] = [
     localisation: "Lyon",
     price: "250 000€",
     path: "/image/achats/maison1.jpg",
-    details: "/house1",
+    details: "/achatHouse1",
   },
   {
     id: 2,
@@ -144,7 +144,7 @@ let data: IList[] = [
     localisation: "Lyon",
     price: "200 000€",
     path: "/image/achats/apart1.jpg",
-    details: "/apart1",
+    details: "/achats/house2",
   },
   {
     id: 3,
@@ -152,23 +152,23 @@ let data: IList[] = [
     localisation: "Toulon",
     price: "180 000€",
     path: "/image/achats/studio1.jpg",
-    details: "/studio1",
+    details: "/achats/house3",
   },
   {
     id: 4,
-    title: "Maison 4 pièces",
+    title: "Maison 3 pièces",
     localisation: "Paris",
     price: "300 000€",
     path: "/image/achats/maison2.jpg",
-    details: "/house2",
+    details: "/achats/house4",
   },
   {
     id: 5,
-    title: "Maison 4 pièces",
+    title: "Maison 3 pièces",
     localisation: "Bordeaux",
     price: "150 000€",
     path: "/image/achats/maison3.jpg",
-    details: "/house3",
+    details: "/achats/house5",
   },
   {
     id: 6,
@@ -176,15 +176,15 @@ let data: IList[] = [
     localisation: "Paris",
     price: "450 000€",
     path: "/image/achats/maison4.jpg",
-    details: "/house6",
+    details: "/achats/house6",
   },
   {
     id: 7,
-    title: "Maison 3 pièces",
+    title: "Maison 4 pièces",
     localisation: "Saint-Etienne",
-    price: "200 000€",
+    price: "250 000€",
     path: "/image/achats/maison5.jpg",
-    details: "/house7",
+    details: "/achats/house7",
   },
   {
     id: 8,
@@ -192,7 +192,7 @@ let data: IList[] = [
     localisation: "Nantes",
     price: "400 000€",
     path: "/image/achats/maison6.jpg",
-    details: "/house8",
+    details: "/achats/house8",
   },
 ];
 

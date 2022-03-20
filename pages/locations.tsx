@@ -28,7 +28,7 @@ const Locations: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ARTHIMMO - Locations</title>
+        <title>ORTHIMMO - Locations</title>
       </Head>
 
       <header>

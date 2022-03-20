@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ARTHIMMO</title>
+        <title>ORTHIMMO</title>
       </Head>
 
       <header>

@@ -54,7 +54,7 @@ const Services: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ARTHIMMO</title>
+        <title>ORTHIMMO - Services clients</title>
       </Head>
 
       <header>
