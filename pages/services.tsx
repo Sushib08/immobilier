@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Image from "next/image";
 import Footer from "../components/footer";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState , createRef } from "react";
 
 const Input = styled.input`
   font-size: 25px;
@@ -36,16 +36,16 @@ const Connexion = styled.button`
 `;
 
 const Services: NextPage = () => {
-  const inputRef = React.createRef();
+  const inputRef = createRef<HTMLInputElement>();
 
   let [words, setWords] = useState();
 
   let [button, setButton] = useState(false);
 
-  const append = (value: any) => {
+  const append = (value : any) => {
     if (value.trim()) {
       setWords(value);
-      inputRef.current.value = "";
+      value = "";
       setButton(true);
     }
     console.log(value);
@@ -85,12 +85,12 @@ const Services: NextPage = () => {
               />
               <Input placeholder="Identifiant" ref={inputRef}></Input>
             </div>
-            <Connexion onClick={() => append(inputRef.current.value)}>Connexion</Connexion>
+            <Connexion onClick={() => append(inputRef.current?.value)}>Connexion</Connexion>
           </div>
         ) : (
           ""
         )}
-        <div className=" font-sans text-[80px] text-[#c2ad74] items-center">{button ? <p className="text">Bienvenue {words}</p> : ""}</div>
+        <div className=" font-sans text-[80px] text-[#c2ad74] items-center text-center">{button ? <p className="text">Bienvenue {words}</p> : ""}</div>
       </main>
 
       <footer>

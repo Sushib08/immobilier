@@ -28,9 +28,9 @@ const Home: NextPage = () => {
         <h1 className=" text-4xl my-8 text-[#c2ad74] font-bold underline">
           Voici nos agences en France
         </h1>
-        <div className="flex justify-between">
+        <div className="flex flex-col items-center md:flex-row justify-between">
           <Image priority src="/map.png" height={550} width={600} alt="users" />
-          <div className=" mt-[200px] text-xl font-sans font-semibold">
+          <div className=" mt-[10px] text-xl font-sans font-semibold">
             <Link href="#" passHref>
               <a>
                 <li className=" mb-2 hover:text-[#707070]">

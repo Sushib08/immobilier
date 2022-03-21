@@ -56,6 +56,7 @@ interface IList {
   price: string;
   path: string;
   details: string;
+  stateFavoris : boolean
 }
 
 let data: IList[] = [
@@ -66,6 +67,7 @@ let data: IList[] = [
     price: "250 000€",
     path: "/image/achats/maison1.jpg",
     details: "/achatHouse1",
+    stateFavoris : false,
   },
   {
     id: 2,
@@ -74,6 +76,7 @@ let data: IList[] = [
     price: "200 000€",
     path: "/image/achats/apart1.jpg",
     details: "/achats/house2",
+    stateFavoris : false,
   },
   {
     id: 3,
@@ -82,6 +85,7 @@ let data: IList[] = [
     price: "180 000€",
     path: "/image/achats/studio1.jpg",
     details: "/achats/house3",
+    stateFavoris : false,
   },
   {
     id: 4,
@@ -90,6 +94,7 @@ let data: IList[] = [
     price: "300 000€",
     path: "/image/achats/maison2.jpg",
     details: "/achats/house4",
+    stateFavoris : false,
   },
   {
     id: 5,
@@ -98,6 +103,7 @@ let data: IList[] = [
     price: "150 000€",
     path: "/image/achats/maison3.jpg",
     details: "/achats/house5",
+    stateFavoris : false,
   },
   {
     id: 6,
@@ -106,6 +112,7 @@ let data: IList[] = [
     price: "450 000€",
     path: "/image/achats/maison4.jpg",
     details: "/achats/house6",
+    stateFavoris : false,
   },
   {
     id: 7,
@@ -114,6 +121,7 @@ let data: IList[] = [
     price: "250 000€",
     path: "/image/achats/maison5.jpg",
     details: "/achats/house7",
+    stateFavoris : false,
   },
   {
     id: 8,
@@ -122,6 +130,7 @@ let data: IList[] = [
     price: "400 000€",
     path: "/image/achats/maison6.jpg",
     details: "/achats/house8",
+    stateFavoris : false,
   },
 ];
 
@@ -129,6 +138,14 @@ const Achats: FC = ({ ...props }) => {
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
+
+  const checkedFavoris = (id : number) => {
+    const foundFavoris = searchParams.find((item) => item.id === id);
+    foundFavoris?.stateFavoris = !foundFavoris?.stateFavoris;
+    setSearchParams([...searchParams])
+    console.log(foundFavoris);
+    
+  }
 
   return (
 
@@ -175,8 +192,11 @@ const Achats: FC = ({ ...props }) => {
                     {achats.localisation}
                   </div>
                   <div className=" flex justify-end mb-4">
-                <ButtonFavoris />
-                <ButtonMessage />
+                <ButtonFavoris 
+                fill={achats.stateFavoris ? "red" : "#ddd" }
+                onClick={() => checkedFavoris(achats.id)} />
+                <ButtonMessage fill={achats.stateFavoris ? "#c2ad74" : "#ddd" }
+                onClick={() => checkedFavoris(achats.id)}  />
               </div>
                 </Card>
               );
