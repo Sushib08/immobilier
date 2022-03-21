@@ -10,17 +10,17 @@ const Footer: FC<IMenu> = ({ className, ...props }) => {
   const liens = Liens();
   const reseaux = Reseaux();
   return (
-    <div className=" flex justify-between mx-16" {...props}>
-      <div className=" flex justify-between my-8 font-semibold">
+    <div className=" flex flex-col items-center md:flex-row justify-between mx-16" {...props}>
+      <div className=" flex flex-col items-center md:flex-row justify-between my-8 font-semibold text-center">
         {liens.map((liens) => (
           <Link key={liens.id} href={liens.link}>
-            <a className=" text-3xl flex-row mx-6 hover:text-[#C2AD74]">
+            <a className="text-3xl flex-row mx-6 hover:text-[#C2AD74]">
               {liens.name}
             </a>
           </Link>
         ))}
       </div>
-      <div className="my-6">
+      <div className=" flex flex-row items-center my-6">
         {reseaux.map((reseaux) => (
           <Link key={reseaux.id} href={reseaux.link}>
             <a className=" flex-row mx-3">

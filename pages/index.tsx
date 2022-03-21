@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Link from "next/link";
 import Footer from "../components/footer";
 import styled from "styled-components";
-import Test from "../components/test";
+// import Dashboard from "../components/test2";
 
 const Description = styled.p`
   :hover {
@@ -35,11 +35,11 @@ const Home: NextPage = () => {
               backgroundPosition: "center center",
             }}
           >
-            <div>
+            <div className=" flex flex-col items-center md:flex-row">
               <h2 className=" text-white text-2xl font-serif font-bold mt-[550px] ml-24 hover:text-[#C2AD74] ">
                 House Holiday
               </h2>
-              <Description className=" text-white h-8 w-[350px] ml-14">
+              <Description className=" text-white h-8 w-[350px] -ml-[250px] mt-[600px]">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industrys standard dummy text
                 ever since the 1500s
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
             </div>
           </a>
         </Link>
-        {/* <Test/> */}
+        {/* <Dashboard/> */}
       </main>
 
       <footer>

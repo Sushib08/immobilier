@@ -9,7 +9,7 @@ interface IMenu {
 const Header: FC<IMenu> = ({ className, ...props }) => {
   const liens = Liens();
   return (
-    <div className=" flex justify-between" {...props}>
+    <div className=" flex flex-col items-center justify-between md:flex-row" {...props}>
       <Link href="/">
         <a>
           <Image
@@ -21,11 +21,11 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
           />
         </a>
       </Link>
-      <div className=" flex justify-between mx-8">
-        <div className="mx-24 mt-8 font-semibold ">
+      <div className=" flex flex-col items-center justify-between md:flex-row mx-8">
+        <div className=" flex flex-col items-center md:flex-row mx-24 font-semibold ">
           {liens.map((liens) => (
             <Link key={liens.id} href={liens.link}>
-              <a className=" text-3xl flex-row mx-6 hover:text-[#C2AD74]  ">{liens.name}</a>
+              <a className="text-3xl mx-6 hover:text-[#C2AD74]">{liens.name}</a>
             </Link>
           ))}
           <Link href="/favorites">
