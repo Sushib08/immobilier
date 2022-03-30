@@ -44,9 +44,8 @@ const Exclu: NextPage = () => {
             <p className=" text-lg font-serif font-bold text-[#707070] mb-3">Toulon</p>
             <h2 className=" text-3xl font-sans font-semibold text-[#C2AD74] mb-6">Prix : 350 000€</h2>
             <div className=" flex justify-center">
-            <ButtonFavoris />
-            <ButtonMessage />
-            </div>
+            <div className=" mx-1"><ButtonFavoris fill="red" /></div>
+            <div className=" mx-1"></div><ButtonMessage fill="" /></div>
           </div>
           <div className=" w-[600px] text-[#707070]">
             <p className=" mb-4 mt-2">

@@ -56,7 +56,7 @@ interface IList {
   price: string;
   path: string;
   details: string;
-  stateFavoris : boolean
+  stateFavoris : boolean;
 }
 
 let data: IList[] = [
@@ -144,7 +144,6 @@ const Achats: FC = ({ ...props }) => {
     foundFavoris?.stateFavoris = !foundFavoris?.stateFavoris;
     setSearchParams([...searchParams])
     console.log(foundFavoris);
-    
   }
 
   return (
@@ -191,12 +190,11 @@ const Achats: FC = ({ ...props }) => {
                   <div className=" ml-12 text-[20px] text-[#707070] mb-8">
                     {achats.localisation}
                   </div>
-                  <div className=" flex justify-end mb-4">
-                <ButtonFavoris 
+                  <div className=" flex justify-end mb-4 mx-8 ">
+                <div className=" mx-1"><ButtonFavoris
                 fill={achats.stateFavoris ? "red" : "#ddd" }
-                onClick={() => checkedFavoris(achats.id)} />
-                <ButtonMessage fill={achats.stateFavoris ? "#c2ad74" : "#ddd" }
-                onClick={() => checkedFavoris(achats.id)}  />
+                onClick={() => checkedFavoris(achats.id)} /></div>
+                <div className=" mx-1"><ButtonMessage fill=""/></div>
               </div>
                 </Card>
               );

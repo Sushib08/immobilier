@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import Image from "next/image";
+import IconHeart from "../public/heart";
 
 interface IMenu {
   className: string;
@@ -29,15 +30,8 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
             </Link>
           ))}
           <Link href="/favorites">
-            <a>
-              <Image
-                priority
-                src="/heart.svg"
-                height={35}
-                width={35}
-                alt="heart"
-                className=" hover:scale-110"
-              />
+            <a className=" hover:scale-110">
+            <IconHeart fill={"red"} />
             </a>
           </Link>
         </div>
