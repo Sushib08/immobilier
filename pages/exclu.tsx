@@ -25,8 +25,8 @@ const Exclu: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <h1 className=" text-5xl mb-6 text-[#C2AD74] font-mono font-bold">
-          House of Holiday - Exclu
+        <h1 className=" text-5xl mb-6 text-[#C2AD74] font-bold">
+          HOUSE OF HOLIDAY - EXCLU  
         </h1>
         <div
           style={{
@@ -35,10 +35,11 @@ const Exclu: NextPage = () => {
             height: "100vh",
             WebkitBackgroundSize: "cover",
             backgroundPosition: "center center",
+            borderRadius : "30px",
           }}
         ></div>
-        <div className=" flex justify-between my-8">
-          <div className=" w-[auto] mx-[150px]">
+        <div className=" flex flex-col lg:flex-row justify-between my-8">
+          <div className="flex items-center flex-col mb-6 lg:m-0 lg:items-start">
             <h2 className=" text-4xl font-sans font-bold mb-2">Maison 6 pièces</h2>
             <h3 className=" text-3xl font-sans mb-1">150 m2</h3>
             <p className=" text-lg font-serif font-bold text-[#707070] mb-3">Toulon</p>
@@ -47,7 +48,7 @@ const Exclu: NextPage = () => {
             <div className=" mx-1"><ButtonFavoris fill="red" /></div>
             <div className=" mx-1"></div><ButtonMessage fill="" /></div>
           </div>
-          <div className=" w-[600px] text-[#707070]">
+          <div className=" lg:ml-6 max-w-[600px] text-[#707070]">
             <p className=" mb-4 mt-2">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
               quaerat eum temporibus placeat distinctio animi, ut molestiae,

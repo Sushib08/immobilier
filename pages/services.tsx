@@ -63,7 +63,7 @@ const Services: NextPage = () => {
 
       <main className={styles.main}>
         {!button ? (
-          <div className=" h-2 -my-32">
+          <div className=" h-2 my-44">
             <h1 className=" flex items-center font-serif text-center text-[30px] font-semibold w-[700px] -mt-44">
               Pour accéder à votre espace Artimmo, utilisez vos identifiants
               habituels.

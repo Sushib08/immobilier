@@ -3,13 +3,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/header";
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "../components/footer";
 import styled from "styled-components";
 // import Dashboard from "../components/test2";
 
 const Description = styled.p`
   :hover {
-    text-shadow: 6px 6px 4px #707070;
   }
 `;
 
@@ -25,30 +25,31 @@ const Home: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <Link href="/exclu">
-          <a
-            style={{
-              backgroundImage: "url(/maisonExclu.jpg)",
-              width: "100%",
-              height: "100vh",
-              WebkitBackgroundSize: "cover",
-              backgroundPosition: "center center",
-            }}
-          >
-            <div className=" flex flex-col items-center md:flex-row">
-              <h2 className=" text-white text-2xl font-serif font-bold mt-[550px] ml-24 hover:text-[#C2AD74] ">
-                House Holiday
-              </h2>
-              <Description className=" text-white h-8 w-[350px] -ml-[250px] mt-[600px]">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s
-              </Description>
-            </div>
-          </a>
-        </Link>
+        <div className=" flex flex-col lg:flex-row justify-between items-center">
+          <Link href="/exclu">
+            <a className="">
+              <Image
+                priority
+                src="/maisonExclu.jpg"
+                height={500}
+                width={800}
+                alt="links"
+                className=" hover:scale-105 rounded-[30px]"
+              />
+            </a>
+          </Link>
+          <div className="flex flex-col lg:ml-20 mt-8 lg:m-0 lg:items-start">
+            <h1 className=" text-7xl font-bold">Exclusivité Chateau <br/> Bellefont</h1>
+            <h2 className=" mt-5 font-medium text-4xl ">House Holiday</h2>
+            <Description className=" mt-2">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industrys standard dummy text
+              ever since the 1500s
+            </Description>
+            <button className=" mt-12 px-4 py-2 bg-[#C2AD74] rounded-lg">Viewport</button>
+          </div>
+        </div>
         {/* <Dashboard/> */}
-
       </main>
 
       <footer>
