@@ -16,6 +16,7 @@ const Description = styled.p`
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
+
       <Head>
         <title>ORTHIMMO</title>
       </Head>
