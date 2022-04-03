@@ -56,6 +56,7 @@ interface IList {
   price: string;
   path: string;
   details: string;
+  stateFavoris : boolean
 }
 
 let data: IList[] = [
@@ -66,6 +67,7 @@ let data: IList[] = [
     price: "1 500 €",
     path: "/image/locations/maison1.jpg",
     details: "/house1",
+    stateFavoris : false,
   },
   {
     id: 2,
@@ -74,6 +76,7 @@ let data: IList[] = [
     price: "500€",
     path: "/image/locations/apart1.jpg",
     details: "/apart1",
+    stateFavoris : false,
   },
   {
     id: 3,
@@ -82,6 +85,7 @@ let data: IList[] = [
     price: "400€",
     path: "/image/locations/studio1.jpg",
     details: "/studio1",
+    stateFavoris : false,
   },
   {
     id: 4,
@@ -90,6 +94,7 @@ let data: IList[] = [
     price: "1 300€",
     path: "/image/locations/maison2.jpg",
     details: "/house2",
+    stateFavoris : false,
   },
   {
     id: 5,
@@ -98,6 +103,7 @@ let data: IList[] = [
     price: "1 000€",
     path: "/image/locations/maison3.jpg",
     details: "/house3",
+    stateFavoris : false,
   },
   {
     id: 6,
@@ -106,6 +112,7 @@ let data: IList[] = [
     price: "2 000€",
     path: "/image/locations/maison4.jpg",
     details: "/house6",
+    stateFavoris : false,
   },
   {
     id: 7,
@@ -114,6 +121,7 @@ let data: IList[] = [
     price: "700€",
     path: "/image/locations/maison5.jpg",
     details: "/house7",
+    stateFavoris : false,
   },
   {
     id: 8,
@@ -122,69 +130,90 @@ let data: IList[] = [
     price: "950€",
     path: "/image/locations/maison6.jpg",
     details: "/house8",
+    stateFavoris : false,
   },
 ];
 
 const Locations: FC = ({ ...props }) => {
+
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
 
-  return (
+  const filter = (e: { target: { value: any; }; }) => {
+    const keyword = e.target.value;
 
-      <div className="my-12">
-        <div className="flex flex-col items-center md:flex-row justify-between mx-24">
+    if (keyword !== '') {
+      const results = data.filter((item) => {
+        return item.title.toLowerCase().includes(keyword.toLowerCase());
+      });
+      setSearchParams(results);
+    } else {
+      setSearchParams(data);
+    }
+
+    setName(keyword);
+  };
+
+  const checkedFavoris = (id: number) => {
+    const foundFavoris = searchParams.find((item) => item.id === id);
+    foundFavoris?.stateFavoris = !foundFavoris?.stateFavoris;
+    setSearchParams([...searchParams]);
+    console.log(foundFavoris);
+  };
+
+  return (
+    <div className="my-12">
+      <div className="flex flex-col items-center md:flex-row justify-between mx-24">
         <h1 className=" text-[#C2AD74] text-[35px] font-semibold font-sans ">
           LOCATIONS
         </h1>
         <Input
           placeholder="Rechercher..."
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={filter}
         />
-        </div>
-        <ContentCard>
-          {searchParams.map((locations) => {
-            if (
-              name == "" ||
-              locations.title.toLowerCase().includes(name.toLowerCase())
-            ) {
-              return (
-                <Card key={locations.id}>
-                  <Link href={locations.details} passHref>
-                    <a>
-                      <Image
-                        priority
-                        src={locations.path}
-                        height={320}
-                        width={340}
-                        alt="houses"
-                        className=" overflow-hidden object-cover"
-                      />
-                    </a>
-                  </Link>
-                  <Description>
-                    <h2 className=" text-[25px] font-semibold">
-                      {locations.title}
-                    </h2>
-                    <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
-                      {locations.price}
-                    </div>
-                  </Description>
-                  <div className=" ml-12 text-[20px] text-[#707070] mb-8">
-                    {locations.localisation}
-                  </div>
-                  <div className=" flex justify-end mb-4">
-                <ButtonFavoris />
-                <ButtonMessage />
-              </div>
-                </Card>
-              );
-            }
-          })}
-        </ContentCard>
-        {error && <p>{error}</p>}
       </div>
+      <ContentCard>
+          {searchParams && searchParams.length > 0 ? (
+              searchParams.map((locations) => (
+                <Card key={locations.id}>
+                <Link href={locations.details} passHref>
+                  <a>
+                    <Image
+                      priority
+                      src={locations.path}
+                      height={320}
+                      width={340}
+                      alt="houses"
+                      className=" overflow-hidden object-cover"
+                    />
+                  </a>
+                </Link>
+                <Description>
+                  <h2 className=" text-[25px] font-semibold">
+                    {locations.title}
+                  </h2>
+                  <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
+                    {locations.price}
+                  </div>
+                </Description>
+                <div className=" ml-12 text-[20px] text-[#707070] mb-8">
+                  {locations.localisation}
+                </div>
+                <div className=" flex justify-end mb-4 mx-8 ">
+              <div className=" mx-1"><ButtonFavoris
+              fill={locations.stateFavoris ? "red" : "#ddd" }
+              onClick={() => checkedFavoris(locations.id)} /></div>
+              <div className=" mx-1"><ButtonMessage fill=""/></div>
+            </div>
+              </Card>
+              ))
+          ) : (
+            <p>{error}</p>
+          )}
+      </ContentCard>
+    </div>
   );
 };
 

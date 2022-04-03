@@ -44,14 +44,15 @@ const History: NextPage = () => {
             height: "100vh",
             WebkitBackgroundSize: "cover",
             backgroundPosition: "center center",
+            borderRadius : "30px",
           }}
         >
           <h2 className=" text-white text-5xl font-serif font-semibold mt-[400px] text-center hover:text-[#C2AD74] ">
             Notre Histoire
           </h2>
         </div>
-        <div>
-          <Paragraph1>
+        <div className=" flex flex-col justify-center max-w-7xl my-8 text-[#707070]">
+          <p className=" mb-8">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500sLorem Ipsum is simply dummy text of the printing
@@ -80,8 +81,8 @@ const History: NextPage = () => {
             1500sLorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard
             dummy text ever since the 1500s00s
-          </Paragraph1>
-          <Paragraph2>
+          </p>
+          <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500sLorem Ipsum is simply dummy text of the printing
@@ -95,7 +96,7 @@ const History: NextPage = () => {
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500sLorem Ipsum is simply dummy text of the printing
             and typesetting indu
-          </Paragraph2>
+          </p>
         </div>
       </main>
 

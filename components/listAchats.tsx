@@ -135,74 +135,85 @@ let data: IList[] = [
 ];
 
 const Achats: FC = ({ ...props }) => {
+
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
 
-  const checkedFavoris = (id : number) => {
+  const filter = (e: { target: { value: any; }; }) => {
+    const keyword = e.target.value;
+
+    if (keyword !== '') {
+      const results = data.filter((item) => {
+        return item.title.toLowerCase().includes(keyword.toLowerCase());
+      });
+      setSearchParams(results);
+    } else {
+      setSearchParams(data);
+    }
+
+    setName(keyword);
+  };
+
+  const checkedFavoris = (id: number) => {
     const foundFavoris = searchParams.find((item) => item.id === id);
     foundFavoris?.stateFavoris = !foundFavoris?.stateFavoris;
-    setSearchParams([...searchParams])
+    setSearchParams([...searchParams]);
     console.log(foundFavoris);
-  }
+  };
 
   return (
-
-      <div className="my-12">
-        <div className="flex flex-col items-center md:flex-row justify-between mx-24">
+    <div className="my-12">
+      <div className="flex flex-col items-center md:flex-row justify-between mx-24">
         <h1 className=" text-[#C2AD74] text-[35px] font-semibold font-sans ">
           ACHATS
         </h1>
         <Input
           placeholder="Rechercher..."
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={filter}
         />
-        </div>
-        <ContentCard>
-          {searchParams.map((achats) => {
-            if (
-              name == "" ||
-              achats.title.toLowerCase().includes(name.toLowerCase())
-            ) {
-              return (
-                <Card key={achats.id}>
-                  <Link href={achats.details} passHref>
-                    <a>
-                      <Image
-                        priority
-                        src={achats.path}
-                        height={320}
-                        width={340}
-                        alt="houses"
-                        className=" overflow-hidden object-cover"
-                      />
-                    </a>
-                  </Link>
-                  <Description>
-                    <h2 className=" text-[25px] font-semibold">
-                      {achats.title}
-                    </h2>
-                    <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
-                      {achats.price}
-                    </div>
-                  </Description>
-                  <div className=" ml-12 text-[20px] text-[#707070] mb-8">
-                    {achats.localisation}
-                  </div>
-                  <div className=" flex justify-end mb-4 mx-8 ">
-                <div className=" mx-1"><ButtonFavoris
-                fill={achats.stateFavoris ? "red" : "#ddd" }
-                onClick={() => checkedFavoris(achats.id)} /></div>
-                <div className=" mx-1"><ButtonMessage fill=""/></div>
-              </div>
-                </Card>
-              );
-            }
-          })}
-        </ContentCard>
-        {error && <p>{error}</p>}
       </div>
+      <ContentCard>
+          {searchParams && searchParams.length > 0 ? (
+              searchParams.map((achats) => (
+                <Card key={achats.id}>
+                <Link href={achats.details} passHref>
+                  <a>
+                    <Image
+                      priority
+                      src={achats.path}
+                      height={320}
+                      width={340}
+                      alt="houses"
+                      className=" overflow-hidden object-cover"
+                    />
+                  </a>
+                </Link>
+                <Description>
+                  <h2 className=" text-[25px] font-semibold">
+                    {achats.title}
+                  </h2>
+                  <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
+                    {achats.price}
+                  </div>
+                </Description>
+                <div className=" ml-12 text-[20px] text-[#707070] mb-8">
+                  {achats.localisation}
+                </div>
+                <div className=" flex justify-end mb-4 mx-8 ">
+              <div className=" mx-1"><ButtonFavoris
+              fill={achats.stateFavoris ? "red" : "#ddd" }
+              onClick={() => checkedFavoris(achats.id)} /></div>
+              <div className=" mx-1"><ButtonMessage fill=""/></div>
+            </div>
+              </Card>
+              ))
+          ) : (
+            <p>{error}</p>
+          )}
+      </ContentCard>
+    </div>
   );
 };
 

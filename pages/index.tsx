@@ -39,14 +39,20 @@ const Home: NextPage = () => {
             </a>
           </Link>
           <div className="flex flex-col lg:ml-20 mt-8 lg:m-0 lg:items-start">
-            <h1 className=" text-7xl font-bold">Exclusivité Chateau <br/> Bellefont</h1>
+            <h1 className=" text-7xl font-bold">
+              Exclusivité Chateau <br /> Bellefont
+            </h1>
             <h2 className=" mt-5 font-medium text-4xl ">House Holiday</h2>
             <Description className=" mt-2">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s
             </Description>
-            <button className=" mt-12 px-4 py-2 bg-[#C2AD74] rounded-lg">Viewport</button>
+            <Link href={"/exclu"} passHref>
+              <button className={styles.btn}>
+                Viewport
+              </button>
+            </Link>
           </div>
         </div>
         {/* <Dashboard/> */}
