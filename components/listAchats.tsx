@@ -157,9 +157,12 @@ const Achats: FC = ({ ...props }) => {
 
   const checkedFavoris = (id: number) => {
     const foundFavoris = searchParams.find((item) => item.id === id);
-    foundFavoris?.stateFavoris = !foundFavoris?.stateFavoris;
-    setSearchParams([...searchParams]);
-    console.log(foundFavoris);
+    if (foundFavoris) {
+      foundFavoris.stateFavoris = !foundFavoris.stateFavoris;
+      setSearchParams([...searchParams]);
+      console.log(foundFavoris);
+    }
+    
   };
 
   return (
