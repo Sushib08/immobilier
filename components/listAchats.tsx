@@ -1,11 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FC } from "react";
-import ButtonFavoris from "./buttonFavoris";
-import ButtonMessage from "./buttonMessage";
+import ButtonFavoris from "./elements/buttonFavoris";
+import ButtonMessage from "./elements/buttonMessage";
 import styled from "styled-components";
 import React, { useState } from "react";
 import error from "next/error";
+import Titre from "./elements/titre";
+import ButtonOnImage from "./elements/buttonOnimage";
 
 const Input = styled.input`
   padding: 5px;
@@ -168,9 +170,7 @@ const Achats: FC = ({ ...props }) => {
   return (
     <div className="my-12">
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
-        <h1 className=" text-[#C2AD74] text-[35px] font-semibold font-sans ">
-          ACHATS
-        </h1>
+        <Titre text={"ACHATS"}></Titre>
         <Input
           placeholder="Rechercher..."
           value={name}
@@ -210,6 +210,7 @@ const Achats: FC = ({ ...props }) => {
               onClick={() => checkedFavoris(achats.id)} /></div>
               <div className=" mx-1"><ButtonMessage fill=""/></div>
             </div>
+            {/* <ButtonOnImage link={achats.path} text={"Viewport"}></ButtonOnImage> */}
               </Card>
               ))
           ) : (

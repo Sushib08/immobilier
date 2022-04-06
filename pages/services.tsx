@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/header";
+import Header from "../components/sections/header";
 import Image from "next/image";
-import Footer from "../components/footer";
+import Footer from "../components/sections/footer";
 import styled from "styled-components";
 import React, { useState , createRef } from "react";
 

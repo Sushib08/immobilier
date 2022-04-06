@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/header";
+import Header from "../components/sections/header";
 import Link from "next/link";
 import Image from "next/image";
-import Footer from "../components/footer";
+import Footer from "../components/sections/footer";
 import styled from "styled-components";
-// import Dashboard from "../components/test2";
+import ButtonViewport from "../components/elements/buttonViewport";
 
 const Description = styled.p`
   :hover {
@@ -16,14 +16,11 @@ const Description = styled.p`
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-
       <Head>
         <title>ORTHIMMO</title>
       </Head>
 
-      <header>
-        <Header className={styles.liens} />
-      </header>
+      <Header className={styles.liens} />
 
       <main className={styles.main}>
         <div className=" flex flex-col lg:flex-row justify-between items-center">
@@ -44,24 +41,17 @@ const Home: NextPage = () => {
               Exclusivité Chateau <br /> Bellefont
             </h1>
             <h2 className=" mt-5 font-medium text-4xl ">House Holiday</h2>
-            <Description className=" mt-2">
+            <Description className=" mt-2 text-[#707070]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s
             </Description>
-            <Link href={"/exclu"} passHref>
-              <button className={styles.btn}>
-                Viewport
-              </button>
-            </Link>
+            <ButtonViewport link={"/exclu"} text={"Viewport"}></ButtonViewport>
           </div>
         </div>
-        {/* <Dashboard/> */}
       </main>
 
-      <footer>
         <Footer className="" />
-      </footer>
     </div>
   );
 };

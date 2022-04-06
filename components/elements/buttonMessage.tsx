@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from "react";
-import styled from "styled-components";
-import IconHeart from "../public/heart";
+import styled from "styled-components"; 
+import IconMessage from "../../public/message";
 
 const Button = styled.button`
   display: flex;
@@ -18,7 +18,7 @@ interface IButton {
   fill: string;
 }
 
-const ButtonFavoris: FC<IButton> = ({
+const ButtonMessage: FC<IButton> = ({
   onClick,
   fill,
   background,
@@ -30,8 +30,8 @@ const ButtonFavoris: FC<IButton> = ({
       style={{ backgroundColor: `${background}` }}
       {...props}
     >
-      <IconHeart fill={fill} />
+      <IconMessage fill={fill} />
     </Button>
   );
 };
-export default ButtonFavoris;
+export default ButtonMessage;

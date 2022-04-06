@@ -13,7 +13,7 @@ const Footer: FC<IMenu> = ({ className, ...props }) => {
       <div className=" flex flex-row items-center my-6">
         {reseaux.map((reseaux) => (
           <Link key={reseaux.id} href={reseaux.link}>
-            <a className=" flex-row mx-3">
+            <a className=" flex-row mx-3 ">
               <Image
                 priority
                 src={reseaux.source}
@@ -31,12 +31,6 @@ const Footer: FC<IMenu> = ({ className, ...props }) => {
 };
 
 export default Footer;
-
-interface ILiens {
-  id: number;
-  name: string;
-  link: string;
-}
 
 interface IReseaux {
   id: number;

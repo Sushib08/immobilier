@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC, useState } from "react";
 import Image from "next/image";
-import IconHeart from "../public/heart";
+import IconHeart from "../../public/heart";
 
 interface IMenu {
   className: string;

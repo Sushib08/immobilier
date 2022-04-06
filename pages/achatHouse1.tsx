@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../components/sections/header";
+import Footer from "../components/sections/footer";
 import styled from "styled-components";
-import ButtonFavoris from "../components/buttonFavoris";
-import ButtonMessage from "../components/buttonMessage";
+import ButtonFavoris from "../components/elements/buttonFavoris";
+import ButtonMessage from "../components/elements/buttonMessage";
 
 const Description = styled.p`
   :hover {

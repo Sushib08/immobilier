@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/header";
+import Header from "../components/sections/header";
 import ListLocations from "../components/listLocations";
-import Footer from "../components/footer";
+import Footer from "../components/sections/footer";
 import styled from "styled-components";
 
 const Input = styled.input`
