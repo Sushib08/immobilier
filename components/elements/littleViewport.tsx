@@ -1,20 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FC } from "react";
 import styled from "styled-components";
 
-const LittleView = styled.button`		
+const Viewport = styled.button`		
 	position: relative;	
-	padding: 10px;
-	font-size: 10px;
-	color: var(--inv);
+	padding: 20px;
+	font-size: 15px;
+	color: white;
 	letter-spacing: 0.5rem;
 	text-transform: uppercase;
 	transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);	
 	cursor: pointer;
 	user-select: none;
     margin-top: 20px;
-    border: 2px solid #C2AD74;
+    border: 3px solid #C2AD74;
 
 
 :before{
@@ -26,7 +25,6 @@ const LittleView = styled.button`
 	width: 0;
 	height: 100%;
 	right: 0;
-	border: 1px solid #707070;
 	border-left: 0;
 	border-right: 0;
 }
@@ -37,9 +35,9 @@ const LittleView = styled.button`
 	position: absolute;	
 	transition: inherit;
 	z-index: -1;
-	top: 0;
+	top: -2px;
 	width: 0;
-	height: 100%;
+	height: 105%;
 }
 
 :hover {
@@ -55,34 +53,22 @@ const LittleView = styled.button`
 :hover:after {
 	background: #C2AD74;
 	transition-delay: .45s;
-	width: 100%;
+	width: 103%;
+    left: -2px;
 }
 `;
 
-const Liens = styled.a`		
-
-`;
-
-interface ILittleViewport {
+interface ILittleView {
   link: string;
   text: string;
+  className?: string
 }
 
-const ButtonOnImage: FC<ILittleViewport> = ({ link, text, ...props }) => {
+const LittleViewport: FC<ILittleView> = ({className, link, text, ...props }) => {
   return (
-	<Link href={link} passHref>
-	<Liens>
-	  <Image
-		priority
-		src={link}
-		height={320}
-		width={340}
-		alt="houses"
-		className=" overflow-hidden object-cover"
-	  />
-	  <ButtonOnImage link={link} text={"Viewport"}></ButtonOnImage>
-	</Liens>
-  </Link>
+    <Link {...props} href={link} passHref>
+      <Viewport className={className} {...props}>{text}</Viewport>
+    </Link>
   );
 };
-export default ButtonOnImage;
+export default LittleViewport;

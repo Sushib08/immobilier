@@ -7,6 +7,12 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import error from "next/error";
 import Titre from "./elements/titre";
+import Images from "./elements/image";
+import NameHouse from "./elements/nameHouse";
+import Price from "./elements/price";
+import LittleViewport from "./elements/littleViewport";
+import styles from "../styles/Home.module.css";
+import Localisation from "./elements/localisation";
 
 const Input = styled.input`
   padding: 5px;
@@ -40,6 +46,16 @@ const Card = styled.div`
   border-radius: 49px;
   margin-top: 30px;
   overflow: hidden;
+
+  .little {
+    display: none;
+  }
+
+  :hover {
+    .little {
+      display: block;
+    }
+  }
 `;
 
 const Description = styled.div`
@@ -57,7 +73,7 @@ interface IList {
   price: string;
   path: string;
   details: string;
-  stateFavoris : boolean
+  stateFavoris: boolean;
 }
 
 let data: IList[] = [
@@ -68,7 +84,7 @@ let data: IList[] = [
     price: "1 500 €",
     path: "/image/locations/maison1.jpg",
     details: "/house1",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 2,
@@ -77,7 +93,7 @@ let data: IList[] = [
     price: "500€",
     path: "/image/locations/apart1.jpg",
     details: "/apart1",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 3,
@@ -86,7 +102,7 @@ let data: IList[] = [
     price: "400€",
     path: "/image/locations/studio1.jpg",
     details: "/studio1",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 4,
@@ -95,7 +111,7 @@ let data: IList[] = [
     price: "1 300€",
     path: "/image/locations/maison2.jpg",
     details: "/house2",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 5,
@@ -104,7 +120,7 @@ let data: IList[] = [
     price: "1 000€",
     path: "/image/locations/maison3.jpg",
     details: "/house3",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 6,
@@ -113,7 +129,7 @@ let data: IList[] = [
     price: "2 000€",
     path: "/image/locations/maison4.jpg",
     details: "/house6",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 7,
@@ -122,7 +138,7 @@ let data: IList[] = [
     price: "700€",
     path: "/image/locations/maison5.jpg",
     details: "/house7",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 8,
@@ -131,20 +147,19 @@ let data: IList[] = [
     price: "950€",
     path: "/image/locations/maison6.jpg",
     details: "/house8",
-    stateFavoris : false,
+    stateFavoris: false,
   },
 ];
 
 const Locations: FC = ({ ...props }) => {
-
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
 
-  const filter = (e: { target: { value: any; }; }) => {
+  const filter = (e: { target: { value: any } }) => {
     const keyword = e.target.value;
 
-    if (keyword !== '') {
+    if (keyword !== "") {
       const results = data.filter((item) => {
         return item.title.toLowerCase().includes(keyword.toLowerCase());
       });
@@ -163,57 +178,52 @@ const Locations: FC = ({ ...props }) => {
       setSearchParams([...searchParams]);
       console.log(foundFavoris);
     }
-    
   };
 
   return (
     <div className="my-12">
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
-      <Titre text={"LOCATIONS"}></Titre>
-        <Input
-          placeholder="Rechercher..."
-          value={name}
-          onChange={filter}
-        />
+        <Titre text={"LOCATIONS"}></Titre>
+        <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard>
-          {searchParams && searchParams.length > 0 ? (
-              searchParams.map((locations) => (
-                <Card key={locations.id}>
-                <Link href={locations.details} passHref>
-                  <a>
-                    <Image
-                      priority
-                      src={locations.path}
-                      height={320}
-                      width={340}
-                      alt="houses"
-                      className=" overflow-hidden object-cover"
-                    />
-                  </a>
-                </Link>
-                <Description>
-                  <h2 className=" text-[25px] font-semibold">
-                    {locations.title}
-                  </h2>
-                  <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
-                    {locations.price}
-                  </div>
-                </Description>
-                <div className=" ml-12 text-[20px] text-[#707070] mb-8">
-                  {locations.localisation}
+        {searchParams && searchParams.length > 0 ? (
+          searchParams.map((locations) => (
+            <Card key={locations.id}>
+              <div className={styles.content}>
+                <div className={styles.image}>
+                  <Images link={locations.path} />
                 </div>
-                <div className=" flex justify-end mb-4 mx-8 ">
-              <div className=" mx-1"><ButtonFavoris
-              fill={locations.stateFavoris ? "red" : "#ddd" }
-              onClick={() => checkedFavoris(locations.id)} /></div>
-              <div className=" mx-1"><ButtonMessage fill=""/></div>
-            </div>
-              </Card>
-              ))
-          ) : (
-            <p>{error}</p>
-          )}
+                <div className={styles.btn}>
+                  {" "}
+                  <LittleViewport
+                    link={locations.details}
+                    text={"Viewport"}
+                    className="little"
+                  />
+                </div>
+              </div>
+              <Description>
+                <NameHouse link={locations.title} />
+                <Price link={locations.price} />
+              </Description>
+              <Localisation link={locations.localisation} />
+              <div className=" flex justify-end mb-4 mx-8 ">
+                <div className=" mx-1">
+                  <ButtonFavoris
+                    fill={locations.stateFavoris ? "red" : "#ddd"}
+                    onClick={() => checkedFavoris(locations.id)}
+                  />
+                </div>
+                <div className=" mx-1">
+                  <ButtonMessage fill="" />
+                </div>
+              </div>
+            </Card>
+          ))
+        ) : (
+          <p>{error}</p>
+        )}
       </ContentCard>
     </div>
   );

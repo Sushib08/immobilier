@@ -25,7 +25,6 @@ const Viewport = styled.button`
 	width: 0;
 	height: 100%;
 	right: 0;
-	border: 1px solid #707070;
 	border-left: 0;
 	border-right: 0;
 }

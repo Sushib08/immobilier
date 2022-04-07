@@ -1,13 +1,17 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FC } from "react";
 import ButtonFavoris from "./elements/buttonFavoris";
 import ButtonMessage from "./elements/buttonMessage";
 import styled from "styled-components";
-import React, { useState } from "react";
+import styles from "../styles/Home.module.css";
+import React from "react";
 import error from "next/error";
 import Titre from "./elements/titre";
-import ButtonOnImage from "./elements/buttonOnimage";
+import Images from "./elements/image";
+import NameHouse from "./elements/nameHouse";
+import Price from "./elements/price";
+import LittleViewport from "./elements/littleViewport";
+import Localisation from "./elements/localisation";
 
 const Input = styled.input`
   padding: 5px;
@@ -41,6 +45,16 @@ const Card = styled.div`
   border-radius: 49px;
   margin-top: 30px;
   overflow: hidden;
+
+  .little {
+    display: none;
+  }
+
+  :hover {
+    .little {
+      display: block;
+    }
+  }
 `;
 
 const Description = styled.div`
@@ -58,7 +72,7 @@ interface IList {
   price: string;
   path: string;
   details: string;
-  stateFavoris : boolean;
+  stateFavoris: boolean;
 }
 
 let data: IList[] = [
@@ -69,7 +83,7 @@ let data: IList[] = [
     price: "250 000€",
     path: "/image/achats/maison1.jpg",
     details: "/achatHouse1",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 2,
@@ -78,7 +92,7 @@ let data: IList[] = [
     price: "200 000€",
     path: "/image/achats/apart1.jpg",
     details: "/achats/house2",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 3,
@@ -87,7 +101,7 @@ let data: IList[] = [
     price: "180 000€",
     path: "/image/achats/studio1.jpg",
     details: "/achats/house3",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 4,
@@ -96,7 +110,7 @@ let data: IList[] = [
     price: "300 000€",
     path: "/image/achats/maison2.jpg",
     details: "/achats/house4",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 5,
@@ -105,7 +119,7 @@ let data: IList[] = [
     price: "150 000€",
     path: "/image/achats/maison3.jpg",
     details: "/achats/house5",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 6,
@@ -114,7 +128,7 @@ let data: IList[] = [
     price: "450 000€",
     path: "/image/achats/maison4.jpg",
     details: "/achats/house6",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 7,
@@ -123,7 +137,7 @@ let data: IList[] = [
     price: "250 000€",
     path: "/image/achats/maison5.jpg",
     details: "/achats/house7",
-    stateFavoris : false,
+    stateFavoris: false,
   },
   {
     id: 8,
@@ -132,20 +146,19 @@ let data: IList[] = [
     price: "400 000€",
     path: "/image/achats/maison6.jpg",
     details: "/achats/house8",
-    stateFavoris : false,
+    stateFavoris: false,
   },
 ];
 
 const Achats: FC = ({ ...props }) => {
-
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
 
-  const filter = (e: { target: { value: any; }; }) => {
+  const filter = (e: { target: { value: any } }) => {
     const keyword = e.target.value;
 
-    if (keyword !== '') {
+    if (keyword !== "") {
       const results = data.filter((item) => {
         return item.title.toLowerCase().includes(keyword.toLowerCase());
       });
@@ -164,58 +177,51 @@ const Achats: FC = ({ ...props }) => {
       setSearchParams([...searchParams]);
       console.log(foundFavoris);
     }
-    
   };
 
   return (
-    <div className="my-12">
+    <div className="my-12" {...props}>
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
         <Titre text={"ACHATS"}></Titre>
-        <Input
-          placeholder="Rechercher..."
-          value={name}
-          onChange={filter}
-        />
+        <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard>
-          {searchParams && searchParams.length > 0 ? (
-              searchParams.map((achats) => (
-                <Card key={achats.id}>
-                <Link href={achats.details} passHref>
-                  <a>
-                    <Image
-                      priority
-                      src={achats.path}
-                      height={320}
-                      width={340}
-                      alt="houses"
-                      className=" overflow-hidden object-cover"
-                    />
-                  </a>
-                </Link>
-                <Description>
-                  <h2 className=" text-[25px] font-semibold">
-                    {achats.title}
-                  </h2>
-                  <div className=" text-[22px] mt-[2px] text-[#c2ad74]">
-                    {achats.price}
-                  </div>
-                </Description>
-                <div className=" ml-12 text-[20px] text-[#707070] mb-8">
-                  {achats.localisation}
+        {searchParams && searchParams.length > 0 ? (
+          searchParams.map((achats) => (
+            <Card key={achats.id}>
+              <div className={styles.content}>
+                <div className={styles.image}>
+                  <Images link={achats.path} />
                 </div>
-                <div className=" flex justify-end mb-4 mx-8 ">
-              <div className=" mx-1"><ButtonFavoris
-              fill={achats.stateFavoris ? "red" : "#ddd" }
-              onClick={() => checkedFavoris(achats.id)} /></div>
-              <div className=" mx-1"><ButtonMessage fill=""/></div>
-            </div>
-            {/* <ButtonOnImage link={achats.path} text={"Viewport"}></ButtonOnImage> */}
-              </Card>
-              ))
-          ) : (
-            <p>{error}</p>
-          )}
+                <div className={styles.btn}>
+                  <LittleViewport
+                    link={achats.details}
+                    text={"Viewport"}
+                    className="little"
+                  />
+                </div>
+              </div>
+              <Description>
+                <NameHouse link={achats.title} />
+                <Price link={achats.price} />
+              </Description>
+              <Localisation link={achats.localisation} />
+              <div className=" flex justify-end mb-4 mx-8 ">
+                <div className=" mx-1">
+                  <ButtonFavoris
+                    fill={achats.stateFavoris ? "red" : "#ddd"}
+                    onClick={() => checkedFavoris(achats.id)}
+                  />
+                </div>
+                <div className=" mx-1">
+                  <ButtonMessage fill="" />
+                </div>
+              </div>
+            </Card>
+          ))
+        ) : (
+          <p>{error}</p>
+        )}
       </ContentCard>
     </div>
   );

@@ -20,8 +20,8 @@ const Input = styled.input`
   margin-right: 50px;
 
   :hover {
-  border: 1px solid #c2ad74;
-}
+    border: 1px solid #c2ad74;
+  }
 `;
 
 const Achats: NextPage = () => {
@@ -31,18 +31,13 @@ const Achats: NextPage = () => {
         <title>ORTHIMMO - Achats</title>
       </Head>
 
-      <header>
-        <Header className="liens" />
-      </header>
+      <Header className="liens" />
 
       <main>
-
         <ListAchats />
       </main>
 
-      <footer>
-        <Footer className="" />
-      </footer>
+      <Footer className="" />
     </div>
   );
 };
