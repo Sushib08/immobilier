@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/sections/header";
-import ListLocations from "../components/listLocations";
 import Footer from "../components/sections/footer";
 import styled from "styled-components";
+import ListLocations from "../components/sections/listLocations";
 
 const Input = styled.input`
   padding: 5px;
@@ -20,8 +20,8 @@ const Input = styled.input`
   margin-right: 50px;
 
   :hover {
-  border: 1px solid #c2ad74;
-}
+    border: 1px solid #c2ad74;
+  }
 `;
 
 const Locations: NextPage = () => {
@@ -31,18 +31,13 @@ const Locations: NextPage = () => {
         <title>ORTHIMMO - Locations</title>
       </Head>
 
-      <header>
-        <Header className="liens" />
-      </header>
+      <Header className="liens" />
 
       <main>
-
         <ListLocations />
       </main>
 
-      <footer>
-        <Footer className="" />
-      </footer>
+      <Footer className="" />
     </div>
   );
 };

@@ -9,8 +9,8 @@ import styled from "styled-components";
 import ButtonViewport from "../components/elements/buttonViewport";
 
 const Description = styled.p`
-  :hover {
-  }
+  margin-top: 10px;
+  color : #707070;
 `;
 
 const Home: NextPage = () => {
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               Exclusivité Chateau <br /> Bellefont
             </h1>
             <h2 className=" mt-5 font-medium text-4xl ">House Holiday</h2>
-            <Description className=" mt-2 text-[#707070]">
+            <Description>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industrys standard dummy text
               ever since the 1500s

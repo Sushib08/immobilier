@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/sections/header";
-import ListVentes from "../components/listVentes";
+import ListVentes from "../components/sections/listVentes";
 import Footer from "../components/sections/footer";
 import styled from "styled-components";
 
@@ -31,18 +31,13 @@ const Ventes: NextPage = () => {
         <title>ORTHIMMO - Ventes</title>
       </Head>
 
-      <header>
         <Header className="liens" />
-      </header>
 
       <main>
-
         <ListVentes />
       </main>
 
-      <footer>
         <Footer className="" />
-      </footer>
     </div>
   );
 };

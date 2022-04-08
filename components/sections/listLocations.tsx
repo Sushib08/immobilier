@@ -1,18 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
 import { FC } from "react";
-import ButtonFavoris from "./elements/buttonFavoris";
-import ButtonMessage from "./elements/buttonMessage";
+import Image from "next/image";
 import styled from "styled-components";
-import React, { useState } from "react";
+import styles from "../../styles/Home.module.css";
+import React from "react";
 import error from "next/error";
-import Titre from "./elements/titre";
-import Images from "./elements/image";
-import NameHouse from "./elements/nameHouse";
-import Price from "./elements/price";
-import LittleViewport from "./elements/littleViewport";
-import styles from "../styles/Home.module.css";
-import Localisation from "./elements/localisation";
+import LittleViewport from "../elements/littleViewport";
+import ButtonFavoris from "../elements/buttonFavoris";
+import ButtonMessage from "../elements/buttonMessage";
 
 const Input = styled.input`
   padding: 5px;
@@ -64,6 +58,33 @@ const Description = styled.div`
   justify-content: space-around;
   width: 300px;
   margin-bottom: 25px;
+`;
+
+const Title = styled.h1`
+  font-size: 36px;
+  color: #c2ad74;
+  font-family: "Segoe UI";
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+`;
+
+const LodgmentTitle = styled.h2`
+  font-size: 25px;
+  font-weight: 600;
+`;
+
+const Price = styled.h3`
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 2px;
+  color : #C2AD74;
+`;
+
+const Localisation = styled.h3`
+  margin-left : 50px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  color : #707070;
 `;
 
 interface IList {
@@ -183,7 +204,7 @@ const Locations: FC = ({ ...props }) => {
   return (
     <div className="my-12">
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
-        <Titre text={"LOCATIONS"}></Titre>
+        <Title> LOCATIONS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard>
@@ -192,7 +213,13 @@ const Locations: FC = ({ ...props }) => {
             <Card key={locations.id}>
               <div className={styles.content}>
                 <div className={styles.image}>
-                  <Images link={locations.path} />
+                <Image
+                  priority
+                  src={locations.path}
+                  height={320}
+                  width={340}
+                  alt="houses"
+                />
                 </div>
                 <div className={styles.btn}>
                   {" "}
@@ -204,10 +231,10 @@ const Locations: FC = ({ ...props }) => {
                 </div>
               </div>
               <Description>
-                <NameHouse link={locations.title} />
-                <Price link={locations.price} />
+                <LodgmentTitle>{locations.title}</LodgmentTitle>
+                <Price>{locations.price}</Price>
               </Description>
-              <Localisation link={locations.localisation} />
+              <Localisation>{locations.localisation}</Localisation>
               <div className=" flex justify-end mb-4 mx-8 ">
                 <div className=" mx-1">
                   <ButtonFavoris

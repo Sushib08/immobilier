@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/sections/header";
-import ListAchats from "../components/listAchats";
 import Footer from "../components/sections/footer";
 import styled from "styled-components";
+import ListAchats from "../components/sections/listAchats";
 
 const Input = styled.input`
   padding: 5px;

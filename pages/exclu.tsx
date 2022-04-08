@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Header from "../components/sections/header";
 import Footer from "../components/sections/footer";
@@ -7,9 +8,75 @@ import styled from "styled-components";
 import ButtonFavoris from "../components/elements/buttonFavoris";
 import ButtonMessage from "../components/elements/buttonMessage";
 
-const Description = styled.p`
-  :hover {
-    text-shadow: 6px 6px 4px #707070;
+const Description = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 50px;
+  margin-bottom: 25px;
+  color: #c2ad74;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+`;
+
+const LodgmentTitle = styled.h2`
+  font-size: 35px;
+  font-family: "Segoe UI"
+  font-weight: 600;
+  margin-bottom: 10px;
+`;
+
+const Dimension = styled.h3`
+  font-size: 30px;
+  font-family: "Segoe UI"
+  margin-bottom: 5px;
+`;
+
+const Price = styled.h2`
+  font-size: 30px;
+  font-family: "Segoe UI";
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #C2AD74;
+  letter-spacing: 0.1rem;
+`;
+
+const City = styled.p`
+  font-size: 20px;
+  font-family: "Georgia";
+  color : #707070;
+  font-weight: 700;
+  margin-bottom: 25px;
+`;
+
+const Details = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 25px;
+
+  @media (max-width: 1024px) {
+    margin: 0;
+    align-items: center;
+  }
+`;
+
+const OtherDetails = styled.div`
+  max-width: 600px;
+  color: #707070;
+  margin-left: 40px;
+
+  @media (max-width: 1024px) {
+    margin-left: 25px;
   }
 `;
 
@@ -20,43 +87,51 @@ const Exclu: NextPage = () => {
         <title>ORTHIMMO - Exclusivité</title>
       </Head>
 
-      <header>
-        <Header className={styles.liens} />
-      </header>
+      <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <h1 className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-          HOUSE OF HOLIDAY - EXCLU  
-        </h1>
-        <div
-          style={{
-            backgroundImage: "url(/maisonExclu.jpg)",
-            width: "100%",
-            height: "100vh",
-            WebkitBackgroundSize: "cover",
-            backgroundPosition: "center center",
-            borderRadius : "30px",
-          }}
-        ></div>
-        <div className=" flex flex-col lg:flex-row justify-between my-8">
-          <div className="flex items-center flex-col mb-6 lg:m-0 lg:items-start">
-            <h2 className=" text-4xl font-sans font-bold mb-2">Maison 6 pièces</h2>
-            <h3 className=" text-3xl font-sans mb-1">150 m2</h3>
-            <p className=" text-lg font-serif font-bold text-[#707070] mb-3">Toulon</p>
-            <h2 className=" text-3xl font-sans font-semibold text-[#C2AD74] mb-6">Prix : 350 000€</h2>
+        <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
+          HOUSE OF HOLIDAY - EXCLU
+        </Title>
+        <Image
+          className=" rounded-[50px] bg-center"
+          priority
+          src="/maisonExclu.jpg"
+          objectFit="cover"
+          width={1100}
+          height={600}
+          alt="houses"
+        />
+        <Description>
+          <Details>
+            <LodgmentTitle className=" text-4xl font-sans font-bold mb-2">
+              Maison 6 pièces
+            </LodgmentTitle>
+            <Dimension>150 m2</Dimension>
+            <City>
+              Toulon
+            </City>
+            <Price>
+              Prix : 350 000€
+            </Price>
             <div className=" flex justify-center">
-            <div className=" mx-1"><ButtonFavoris fill="red" /></div>
-            <div className=" mx-1"></div><ButtonMessage fill="" /></div>
-          </div>
-          <div className=" lg:ml-6 max-w-[600px] text-[#707070]">
+              <div className=" mx-1">
+                <ButtonFavoris fill="red" />
+              </div>
+              <div className=" mx-1"></div>
+              <ButtonMessage fill="" />
+            </div>
+          </Details>
+          <OtherDetails>
             <p className=" mb-4 mt-2">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
               quaerat eum temporibus placeat distinctio animi, ut molestiae,
               illum neque voluptatibus nemo iste doloremque in deleniti hic sunt
-              amet vero praesentium. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
-              suscipit dolorem, impedit adipisci rerum esse? Placeat aliquid
-              doloremque impedit quas natus, omnis fugiat assumenda inventore
-              modi sequi tenetur exercitationem obcaecati.
+              amet vero praesentium. Lorem ipsum, dolor sit amet consectetur
+              adipisicing elit. Voluptas suscipit dolorem, impedit adipisci
+              rerum esse? Placeat aliquid doloremque impedit quas natus, omnis
+              fugiat assumenda inventore modi sequi tenetur exercitationem
+              obcaecati.
             </p>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
@@ -64,13 +139,11 @@ const Exclu: NextPage = () => {
               quam, facilis recusandae sed. Perferendis aperiam vitae ex harum,
               sint est iusto quibusdam?
             </p>
-          </div>
-        </div>
+          </OtherDetails>
+        </Description>
       </main>
 
-      <footer>
-        <Footer className="" />
-      </footer>
+      <Footer className="" />
     </div>
   );
 };
