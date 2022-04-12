@@ -12,6 +12,7 @@ const Description = styled.p`
   margin-top: 10px;
   color : #707070;
   max-width : 1000px;
+  word-wrap: break-word;
 `;
 
 const History: NextPage = () => {
@@ -24,18 +25,18 @@ const History: NextPage = () => {
       <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <div className=" flex flex-col lg:flex-row justify-between items-center">
+        <div className=" flex flex-col justify-between items-center">
               <Image
                 priority
                 src="/history.jpg"
                 height={500}
                 width={800}
                 alt="links"
-                className=" hover:scale-105 rounded-[30px]"
+                className=" rounded-[30px]"
               />
-          <div className="flex flex-col lg:ml-20 mt-8 lg:m-0 lg:items-start">
-            <h1 className=" text-7xl font-bold">
-             Notre histoire -<br /> Notre parcours
+          <div className="flex flex-col mt-8 lg:items-start">
+            <h1 className=" text-5xl font-bold">
+             Notre histoire - Notre parcours
             </h1>
             <Description>
             Lorem Ipsum is simply dummy text of the printing and typesetting
