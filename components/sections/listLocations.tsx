@@ -7,6 +7,7 @@ import error from "next/error";
 import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
+import Cards from "../elements/card";
 
 const Input = styled.input`
   padding: 5px;
@@ -207,51 +208,7 @@ const Locations: FC = ({ ...props }) => {
         <Title> LOCATIONS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
-      <ContentCard>
-        {searchParams && searchParams.length > 0 ? (
-          searchParams.map((locations) => (
-            <Card key={locations.id}>
-              <div className={styles.content}>
-                <div className={styles.image}>
-                <Image
-                  priority
-                  src={locations.path}
-                  height={320}
-                  width={340}
-                  alt="houses"
-                />
-                </div>
-                <div className={styles.btn}>
-                  {" "}
-                  <LittleViewport
-                    link={locations.details}
-                    text={"Viewport"}
-                    className="little"
-                  />
-                </div>
-              </div>
-              <Description>
-                <LodgmentTitle>{locations.title}</LodgmentTitle>
-                <Price>{locations.price}</Price>
-              </Description>
-              <Localisation>{locations.localisation}</Localisation>
-              <div className=" flex justify-end mb-4 mx-8 ">
-                <div className=" mx-1">
-                  <ButtonFavoris
-                    fill={locations.stateFavoris ? "red" : "#ddd"}
-                    onClick={() => checkedFavoris(locations.id)}
-                  />
-                </div>
-                <div className=" mx-1">
-                  <ButtonMessage fill="" />
-                </div>
-              </div>
-            </Card>
-          ))
-        ) : (
-          <p>{error}</p>
-        )}
-      </ContentCard>
+      <Cards searchParams={searchParams} lodgment={data} checkedFavoris={checkedFavoris} />
     </div>
   );
 };

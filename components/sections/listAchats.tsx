@@ -7,6 +7,7 @@ import error from "next/error";
 import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
+import Cards from "../elements/card";
 
 const Input = styled.input`
   padding: 5px;
@@ -207,48 +208,7 @@ const Achats: FC = ({ ...props }) => {
         <Title>ACHATS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
-      <ContentCard>
-        {searchParams && searchParams.length > 0 ? (
-          searchParams.map((achats) => (
-            <Card key={achats.id}>
-              <div className={styles.content}>
-                <Image
-                  priority
-                  src={achats.path}
-                  height={320}
-                  width={340}
-                  alt="houses"
-                />
-                <div className={styles.btn}>
-                  <LittleViewport
-                    link={achats.details}
-                    text={"Viewport"}
-                    className="little"
-                  />
-                </div>
-              </div>
-              <Description>
-                <LodgmentTitle>{achats.title}</LodgmentTitle>
-                <Price>{achats.price}</Price>
-              </Description>
-              <Localisation>{achats.localisation}</Localisation>
-              <div className=" flex justify-end mb-4 mx-8 ">
-                <div className=" mx-1">
-                  <ButtonFavoris
-                    fill={achats.stateFavoris ? "red" : "#ddd"}
-                    onClick={() => checkedFavoris(achats.id)}
-                  />
-                </div>
-                <div className=" mx-1">
-                  <ButtonMessage fill="" />
-                </div>
-              </div>
-            </Card>
-          ))
-        ) : (
-          <p>{error}</p>
-        )}
-      </ContentCard>
+      <Cards searchParams={searchParams} lodgment={data} checkedFavoris={checkedFavoris} />
     </div>
   );
 };

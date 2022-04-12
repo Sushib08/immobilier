@@ -57,9 +57,7 @@ const Services: NextPage = () => {
         <title>ORTHIMMO - Services clients</title>
       </Head>
 
-      <header>
         <Header className={styles.liens} />
-      </header>
 
       <main className={styles.main}>
         {!button ? (
@@ -93,9 +91,7 @@ const Services: NextPage = () => {
         <div className=" font-sans text-[80px] text-[#c2ad74] items-center text-center">{button ? <p className="text">Bienvenue {words}</p> : ""}</div>
       </main>
 
-      <footer>
         <Footer className="" />
-      </footer>
     </div>
   );
 };

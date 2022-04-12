@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { FC, useState } from "react";
 import Image from "next/image";
-import IconHeart from "../../public/heart";
+import DropMenu from "../elements/dropMenu";
+import Links from "../elements/links";
 
 interface IMenu {
   className: string;
@@ -28,46 +29,14 @@ const Header: FC<IMenu> = ({ className, ...props }) => {
             />
           </a>
         </Link>
-        <button
-          className=" inline-flex p-3 hover:bg-[#C2AD74] rounded lg:hidden text-black ml-auto hover:text-white outline-none"
-          onClick={handleClick}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-        {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
+        <DropMenu onClick={handleClick} />
         <div
           className={`${
             active ? "" : "hidden"
           }   w-full flex lg:inline-flex lg:flex-grow lg:w-4/5 lg:items-center lg:justify-end lg: text-center`}
         >
           <div className=" w-full lg:w-3/5 flex flex-col items-center lg:flex-row justify-between">
-            <div className=" flex flex-col lg:text-center lg:items-center lg:flex-row font-semibold ">
-              {liens.map((liens) => (
-                <Link key={liens.id} href={liens.link}>
-                  <a className="text-2xl mx-6 hover:text-[#C2AD74]">
-                    {liens.name}
-                  </a>
-                </Link>
-              ))}
-              <Link href="/favorites">
-                <a className=" hover:scale-110 lg: mx-[auto]">
-                  <IconHeart fill={"red"} />
-                </a>
-              </Link>
-            </div>
+            <Links liens={liens}/>
             <div className=" flex flex-nowrap justify-center lg:items-center">
               {otherlinks.map((otherlinks) => (
                 <Link key={otherlinks.id} href={otherlinks.link}>
