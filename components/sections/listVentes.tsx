@@ -1,12 +1,6 @@
 import { FC } from "react";
-import Image from "next/image";
 import styled from "styled-components";
-import styles from "../../styles/Home.module.css";
 import React from "react";
-import error from "next/error";
-import LittleViewport from "../elements/littleViewport";
-import ButtonFavoris from "../elements/buttonFavoris";
-import ButtonMessage from "../elements/buttonMessage";
 import Cards from "../elements/card";
 
 const Input = styled.input`
