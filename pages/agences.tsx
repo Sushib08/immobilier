@@ -34,33 +34,33 @@ const Home: NextPage = () => {
             <Link href="#" passHref>
               <a>
                 <li className=" mb-2 hover:text-[#707070]">
-                  Arthimmo Paris - 12 rue Cortot (75018)
+                  Orthimmo Paris - 12 rue Cortot (75018)
                 </li>
               </a>
             </Link>
             <Link href="#" passHref>
               <a>
                 <li className=" mb-2 hover:text-[#707070]">
-                  Arthimmo Lyon - 20 place de la République (69001)
+                Orthimmo Lyon - 20 place de la République (69001)
                 </li>
               </a>
             </Link>
             <Link href="#" passHref>
               <a>
-                <li className=" mb-2 hover:text-[#707070]">Arthimmo Toulon - 6 rue Hoche (83100)</li>
+                <li className=" mb-2 hover:text-[#707070]">Orthimmo Toulon - 6 rue Hoche (83100)</li>
               </a>
             </Link>
             <Link href="#" passHref>
               <a>
                 <li className=" mb-2 hover:text-[#707070]">
-                  Arthimmo Nantes - 35 rue Voltaire (44100)
+                  Orthimmo Nantes - 35 rue Voltaire (44100)
                 </li>
               </a>
             </Link>
             <Link href="#" passHref>
               <a>
                 <li className=" mb-2 hover:text-[#707070]">
-                  Arthimmo Bordeaux - 2 avenue Ares (33200)
+                Orthimmo Bordeaux - 2 avenue Ares (33200)
                 </li>
               </a>
             </Link>
