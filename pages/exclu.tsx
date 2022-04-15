@@ -7,6 +7,7 @@ import Footer from "../components/sections/footer";
 import styled from "styled-components";
 import ButtonFavoris from "../components/elements/buttonFavoris";
 import ButtonMessage from "../components/elements/buttonMessage";
+import ContentExclu from "../components/sections/contentExclu";
 
 const Description = styled.div`
   display: flex;
@@ -46,14 +47,14 @@ const Price = styled.h2`
   font-family: "Segoe UI";
   font-weight: 600;
   margin-bottom: 25px;
-  color: #C2AD74;
+  color: #c2ad74;
   letter-spacing: 0.1rem;
 `;
 
 const City = styled.p`
   font-size: 20px;
   font-family: "Georgia";
-  color : #707070;
+  color: #707070;
   font-weight: 700;
   margin-bottom: 25px;
 `;
@@ -90,57 +91,7 @@ const Exclu: NextPage = () => {
       <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-          HOUSE OF HOLIDAY - EXCLU
-        </Title>
-        <Image
-          className=" rounded-[50px] bg-center"
-          priority
-          src="/maisonExclu.jpg"
-          objectFit="cover"
-          width={1100}
-          height={600}
-          alt="houses"
-        />
-        <Description>
-          <Details>
-            <LodgmentTitle className=" text-4xl font-sans font-bold mb-2">
-              Maison 6 pièces
-            </LodgmentTitle>
-            <Dimension>150 m2</Dimension>
-            <City>
-              Toulon
-            </City>
-            <Price>
-              Prix : 350 000€
-            </Price>
-            <div className=" flex justify-center">
-              <div className=" mx-1">
-                <ButtonFavoris fill="red" />
-              </div>
-              <div className=" mx-1"></div>
-              <ButtonMessage fill="" />
-            </div>
-          </Details>
-          <OtherDetails>
-            <p className=" mb-4 mt-2">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
-              quaerat eum temporibus placeat distinctio animi, ut molestiae,
-              illum neque voluptatibus nemo iste doloremque in deleniti hic sunt
-              amet vero praesentium. Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Voluptas suscipit dolorem, impedit adipisci
-              rerum esse? Placeat aliquid doloremque impedit quas natus, omnis
-              fugiat assumenda inventore modi sequi tenetur exercitationem
-              obcaecati.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-              rem iusto, deleniti doloribus omnis, cupiditate unde doloremque
-              quam, facilis recusandae sed. Perferendis aperiam vitae ex harum,
-              sint est iusto quibusdam?
-            </p>
-          </OtherDetails>
-        </Description>
+        <ContentExclu />
       </main>
 
       <Footer className="" />

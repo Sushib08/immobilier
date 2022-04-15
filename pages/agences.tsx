@@ -5,7 +5,8 @@ import Header from "../components/sections/header";
 import Footer from "../components/sections/footer";
 import styled from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
+import Adress from "../components/elements/adress";
+import ContentAgences from "../components/sections/contentAgences";
 
 const Description = styled.p`
   :hover {
@@ -20,57 +21,13 @@ const Home: NextPage = () => {
         <title>ORTHIMMO - Nos agences</title>
       </Head>
 
-      <header>
-        <Header className={styles.liens} />
-      </header>
+      <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <h1 className=" text-4xl my-8 text-[#c2ad74] font-bold underline">
-          Voici nos agences en France
-        </h1>
-        <div className="flex flex-col items-center md:flex-row justify-between">
-          <Image priority src="/map.png" height={550} width={600} alt="users" />
-          <div className=" mt-[10px] text-xl font-sans font-semibold">
-            <Link href="#" passHref>
-              <a>
-                <li className=" mb-2 hover:text-[#707070]">
-                  Orthimmo Paris - 12 rue Cortot (75018)
-                </li>
-              </a>
-            </Link>
-            <Link href="#" passHref>
-              <a>
-                <li className=" mb-2 hover:text-[#707070]">
-                Orthimmo Lyon - 20 place de la République (69001)
-                </li>
-              </a>
-            </Link>
-            <Link href="#" passHref>
-              <a>
-                <li className=" mb-2 hover:text-[#707070]">Orthimmo Toulon - 6 rue Hoche (83100)</li>
-              </a>
-            </Link>
-            <Link href="#" passHref>
-              <a>
-                <li className=" mb-2 hover:text-[#707070]">
-                  Orthimmo Nantes - 35 rue Voltaire (44100)
-                </li>
-              </a>
-            </Link>
-            <Link href="#" passHref>
-              <a>
-                <li className=" mb-2 hover:text-[#707070]">
-                Orthimmo Bordeaux - 2 avenue Ares (33200)
-                </li>
-              </a>
-            </Link>
-          </div>
-        </div>
+        <ContentAgences />
       </main>
 
-      <footer>
-        <Footer className="" />
-      </footer>
+      <Footer className="" />
     </div>
   );
 };
