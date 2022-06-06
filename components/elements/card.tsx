@@ -1,8 +1,5 @@
 import error from "next/error";
-import Link from "next/link";
-import Image from "next/image";
-import { FC, Key, ReactChild, ReactFragment, ReactPortal } from "react";
-import { UrlObject } from "url";
+import { FC } from "react";
 import ButtonFavoris from "./buttonFavoris";
 import ButtonMessage from "./buttonMessage";
 import styled from "styled-components";

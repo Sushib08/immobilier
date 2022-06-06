@@ -1,8 +1,12 @@
+import type { NextPage } from "next";
 import Image from "next/image";
-import { FC } from "react";
+import Head from "next/head";
+import styles from "../../styles/Home.module.css";
+import Header from "../../components/sections/header";
+import Footer from "../../components/sections/footer";
 import styled from "styled-components";
-import ButtonFavoris from "../elements/buttonFavoris";
-import ButtonMessage from "../elements/buttonMessage";
+import ButtonMessage from "../../components/elements/buttonMessage";
+import ButtonFavoris from "../../components/elements/buttonFavoris";
 
 const Description = styled.div`
   display: flex;
@@ -77,17 +81,26 @@ const OtherDetails = styled.div`
   }
 `;
 
-const ContentHouseAchat: FC = ({ ...props }) => {
+
+const LocationMaisonModerne: NextPage = () => {
   return (
-    <div {...props}>
+    <div className={styles.container}>
+      <Head>
+        <title>ORTHIMMO - Maison Moderne</title>
+      </Head>
+
+      <Header className={styles.liens} />
+
+      <main className={styles.main}>
+      <div>
       <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-        MAISON CHIC DE QUARTIER
+        MAISON MODERNE
       </Title>
       <Title />
       <Image
         className=" rounded-[50px] bg-center"
         priority
-        src="/image/achats/maison1.jpg"
+        src="/image/locations/maison5.jpg"
         objectFit="cover"
         width={1100}
         height={600}
@@ -96,11 +109,11 @@ const ContentHouseAchat: FC = ({ ...props }) => {
       <Description>
         <Details>
           <LodgmentTitle className=" text-4xl font-sans font-bold mb-2">
-            Maison 5 pièces
+            Maison 3 pièces
           </LodgmentTitle>
           <Dimension>100 m2</Dimension>
-          <City>Lyon</City>
-          <Price>Prix : 250 000€</Price>
+          <City>Saint-Etienne</City>
+          <Price>Prix : 700€</Price>
           <div className=" flex justify-center">
             <div className=" mx-1">
               <ButtonFavoris fill="red" />
@@ -128,6 +141,11 @@ const ContentHouseAchat: FC = ({ ...props }) => {
         </OtherDetails>
       </Description>
     </div>
+      </main>
+
+      <Footer className="" />
+    </div>
   );
 };
-export default ContentHouseAchat;
+
+export default LocationMaisonModerne;

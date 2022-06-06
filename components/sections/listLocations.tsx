@@ -99,7 +99,7 @@ let data: IList[] = [
     localisation: "Lyon",
     price: "1 500 €",
     path: "/image/locations/maison1.jpg",
-    details: "/house1",
+    details: "/location/maisonFamille",
     stateFavoris: false,
   },
   {
@@ -108,7 +108,7 @@ let data: IList[] = [
     localisation: "Roanne",
     price: "500€",
     path: "/image/locations/apart1.jpg",
-    details: "/apart1",
+    details: "/location/appart",
     stateFavoris: false,
   },
   {
@@ -117,7 +117,7 @@ let data: IList[] = [
     localisation: "Toulon",
     price: "400€",
     path: "/image/locations/studio1.jpg",
-    details: "/studio1",
+    details: "/location/studio",
     stateFavoris: false,
   },
   {
@@ -126,7 +126,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "1 300€",
     path: "/image/locations/maison2.jpg",
-    details: "/house2",
+    details: "/location/maisonModeste",
     stateFavoris: false,
   },
   {
@@ -135,7 +135,7 @@ let data: IList[] = [
     localisation: "Bordeaux",
     price: "1 000€",
     path: "/image/locations/maison3.jpg",
-    details: "/house3",
+    details: "/location/maisonMontagne",
     stateFavoris: false,
   },
   {
@@ -144,7 +144,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "2 000€",
     path: "/image/locations/maison4.jpg",
-    details: "/house6",
+    details: "/location/maisonHollywoodienne",
     stateFavoris: false,
   },
   {
@@ -153,16 +153,16 @@ let data: IList[] = [
     localisation: "Saint-Etienne",
     price: "700€",
     path: "/image/locations/maison5.jpg",
-    details: "/house7",
+    details: "/location/maisonModerne",
     stateFavoris: false,
   },
   {
     id: 8,
     title: "Maison 5 pièces",
-    localisation: "Nantes",
+    localisation: "Sanary",
     price: "950€",
     path: "/image/locations/maison6.jpg",
-    details: "/house8",
+    details: "/location/maisonPlage",
     stateFavoris: false,
   },
 ];

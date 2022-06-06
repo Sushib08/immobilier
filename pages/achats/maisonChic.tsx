@@ -1,8 +1,12 @@
+import type { NextPage } from "next";
 import Image from "next/image";
-import { FC } from "react";
+import Head from "next/head";
+import styles from "../../styles/Home.module.css";
+import Header from "../../components/sections/header";
+import Footer from "../../components/sections/footer";
 import styled from "styled-components";
-import ButtonFavoris from "../elements/buttonFavoris";
-import ButtonMessage from "../elements/buttonMessage";
+import ButtonMessage from "../../components/elements/buttonMessage";
+import ButtonFavoris from "../../components/elements/buttonFavoris";
 
 const Description = styled.div`
   display: flex;
@@ -77,9 +81,18 @@ const OtherDetails = styled.div`
   }
 `;
 
-const ContentHouseAchat: FC = ({ ...props }) => {
+
+const AchatHouse: NextPage = () => {
   return (
-    <div {...props}>
+    <div className={styles.container}>
+      <Head>
+        <title>ORTHIMMO - Maison Chic</title>
+      </Head>
+
+      <Header className={styles.liens} />
+
+      <main className={styles.main}>
+      <div>
       <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
         MAISON CHIC DE QUARTIER
       </Title>
@@ -128,6 +141,11 @@ const ContentHouseAchat: FC = ({ ...props }) => {
         </OtherDetails>
       </Description>
     </div>
+      </main>
+
+      <Footer className="" />
+    </div>
   );
 };
-export default ContentHouseAchat;
+
+export default AchatHouse;

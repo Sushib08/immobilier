@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import styled from "styled-components";
-import Adress from "../elements/adress";
 import ButtonViewport from "../elements/buttonViewport";
 
 const Description = styled.p`

@@ -99,7 +99,7 @@ let data: IList[] = [
     localisation: "Lyon",
     price: "250 000€",
     path: "/image/achats/maison1.jpg",
-    details: "/achatHouse1",
+    details: "/achats/maisonChic",
     stateFavoris: false,
   },
   {
@@ -108,7 +108,7 @@ let data: IList[] = [
     localisation: "Lyon",
     price: "200 000€",
     path: "/image/achats/apart1.jpg",
-    details: "/achats/house2",
+    details: "/achats/appartBohem",
     stateFavoris: false,
   },
   {
@@ -117,7 +117,7 @@ let data: IList[] = [
     localisation: "Toulon",
     price: "180 000€",
     path: "/image/achats/studio1.jpg",
-    details: "/achats/house3",
+    details: "/achats/studio",
     stateFavoris: false,
   },
   {
@@ -126,7 +126,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "300 000€",
     path: "/image/achats/maison2.jpg",
-    details: "/achats/house4",
+    details: "/achats/maisonClasse",
     stateFavoris: false,
   },
   {
@@ -135,7 +135,7 @@ let data: IList[] = [
     localisation: "Bordeaux",
     price: "150 000€",
     path: "/image/achats/maison3.jpg",
-    details: "/achats/house5",
+    details: "/achats/maisonIsole",
     stateFavoris: false,
   },
   {
@@ -144,7 +144,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "450 000€",
     path: "/image/achats/maison4.jpg",
-    details: "/achats/house6",
+    details: "/achats/villa",
     stateFavoris: false,
   },
   {
@@ -153,7 +153,7 @@ let data: IList[] = [
     localisation: "Saint-Etienne",
     price: "250 000€",
     path: "/image/achats/maison5.jpg",
-    details: "/achats/house7",
+    details: "/achats/maisonBienEtre",
     stateFavoris: false,
   },
   {
@@ -162,7 +162,7 @@ let data: IList[] = [
     localisation: "Nantes",
     price: "400 000€",
     path: "/image/achats/maison6.jpg",
-    details: "/achats/house8",
+    details: "/achats/Chateau",
     stateFavoris: false,
   },
 ];
