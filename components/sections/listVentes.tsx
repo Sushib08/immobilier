@@ -1,7 +1,12 @@
 import { FC } from "react";
 import styled from "styled-components";
+import styles from "../../styles/Home.module.css";
 import React from "react";
-import Cards from "../elements/card";
+import Picture from "../elements/picture";
+import LittleViewport from "../elements/littleViewport";
+import ButtonFavoris from "../elements/buttonFavoris";
+import ButtonMessage from "../elements/buttonMessage";
+import error from "next/error";
 
 const Input = styled.input`
   padding: 5px;
@@ -72,15 +77,17 @@ const Price = styled.h3`
   font-size: 22px;
   font-weight: 600;
   margin-top: 2px;
-  color : #C2AD74;
+  color: #c2ad74;
 `;
 
 const Localisation = styled.h3`
-  margin-left : 50px;
+  margin-left: 50px;
   font-size: 20px;
   margin-bottom: 30px;
-  color : #707070;
+  color: #707070;
 `;
+
+
 
 interface IList {
   id: number;
@@ -167,7 +174,27 @@ let data: IList[] = [
   },
 ];
 
-const Ventes: FC = ({ ...props }) => {
+
+interface IArea {
+  id: number;
+  price: string;
+  localisation: string;
+  stateFavoris: boolean;
+  details: string;
+  path:string;
+  title: string;
+}
+
+interface ICards {
+  searchParams: any;
+  lodgment: IArea[];
+  checkedFavoris: any;
+}
+
+const Ventes: FC<ICards> = ({
+  lodgment,
+  ...props
+}) => {
   const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
     React.useState(data);
   const [name, setName]: [string, (name: string) => void] = React.useState("");
@@ -197,12 +224,49 @@ const Ventes: FC = ({ ...props }) => {
   };
 
   return (
-    <div className="my-12">
+    <div className="my-12" {...props}>
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
         <Title>VENTES</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
-      <Cards searchParams={searchParams} lodgment={data} checkedFavoris={checkedFavoris} />
+      <ContentCard {...props}>
+      {searchParams && searchParams.length > 0 ? (
+        searchParams.map(
+          (lodgment: IArea) => (
+            <Card key={lodgment.id}>
+              <div className={styles.content}>
+                <Picture source={lodgment.path} />
+                <div className={styles.btn}>
+                  <LittleViewport
+                    link={lodgment.details}
+                    text={"Viewport"}
+                    className="little"
+                  />
+                </div>
+              </div>
+              <Description>
+                <LodgmentTitle>{lodgment.title}</LodgmentTitle>
+                <Price>{lodgment.price}</Price>
+              </Description>
+              <Localisation>{lodgment.localisation}</Localisation>
+              <div className=" flex justify-end mb-4 mx-8 ">
+                <div className=" mx-1">
+                  <ButtonFavoris
+                    fill={lodgment.stateFavoris ? "red" : "#ddd"}
+                    onClick={() => checkedFavoris(lodgment.id)}
+                  />
+                </div>
+                <div className=" mx-1">
+                  <ButtonMessage fill="" />
+                </div>
+              </div>
+            </Card>
+          )
+        )
+      ) : (
+        <p>{error}</p>
+      )}
+    </ContentCard>
     </div>
   );
 };

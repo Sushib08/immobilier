@@ -1,7 +1,13 @@
 import { FC } from "react";
 import styled from "styled-components";
+import styles from "../../styles/Home.module.css";
 import React from "react";
-import Cards from "../elements/card";
+import Picture from "../elements/picture";
+import LittleViewport from "../elements/littleViewport";
+import ButtonFavoris from "../elements/buttonFavoris";
+import ButtonMessage from "../elements/buttonMessage";
+import error from "next/error";
+import { getSortedDocsData } from "../../lib/posts";
 
 const Input = styled.input`
   padding: 5px;
@@ -82,17 +88,8 @@ const Localisation = styled.h3`
   color: #707070;
 `;
 
-interface IList {
-  id: number;
-  title: string;
-  localisation: string;
-  price: string;
-  path: string;
-  details: string;
-  stateFavoris: boolean;
-}
 
-let data: IList[] = [
+let data = [
   {
     id: 1,
     title: "Maison 5 pièces",
@@ -167,30 +164,36 @@ let data: IList[] = [
   },
 ];
 
-const Achats: FC = ({ ...props }) => {
-  const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
-    React.useState(data);
-  const [name, setName]: [string, (name: string) => void] = React.useState("");
+
+interface IAllDocs{
+  allDocsData : ReturnType<typeof getSortedDocsData>;
+}
+
+const Achats: FC<IAllDocs> = (props) => {
+  const { allDocsData } = props;
+  const [searchParams, setSearchParams] =
+    React.useState(allDocsData);
+  const [name, setName] = React.useState("");
 
   const filter = (e: { target: { value: any } }) => {
     const keyword = e.target.value;
 
     if (keyword !== "") {
-      const results = data.filter((item) => {
+      const results = allDocsData.filter((item) => {
         return item.title.toLowerCase().includes(keyword.toLowerCase());
       });
       setSearchParams(results);
     } else {
-      setSearchParams(data);
+      setSearchParams(allDocsData);
     }
 
     setName(keyword);
   };
 
-  const checkedFavoris = (id: number) => {
+  const checkedFavoris = (id: string) => {
     const foundFavoris = searchParams.find((item) => item.id === id);
     if (foundFavoris) {
-      foundFavoris.stateFavoris = !foundFavoris.stateFavoris;
+      // foundFavoris.stateFavoris = !foundFavoris.stateFavoris;
       setSearchParams([...searchParams]);
       console.log(foundFavoris);
     }
@@ -202,7 +205,44 @@ const Achats: FC = ({ ...props }) => {
         <Title>ACHATS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
-      <Cards searchParams={searchParams} lodgment={data} checkedFavoris={checkedFavoris} />
+      <ContentCard {...props}>
+      {searchParams && searchParams.length > 0 ? (
+        searchParams.map(
+          (item) => (
+            <Card key={item.id}>
+              <div className={styles.content}>
+                <Picture source={`/image/achats/${item.imgPath}`} alt={item.title} />
+                <div className={styles.btn}>
+                  {/* <LittleViewport
+                    link={item.path}
+                    text={"Viewport"}
+                    className="little"
+                  /> */}
+                </div>
+              </div>
+              <Description>
+                <LodgmentTitle>{item.title}</LodgmentTitle>
+                <Price>{item.price}</Price>
+              </Description>
+              <Localisation>{item.city}</Localisation>
+              <div className=" flex justify-end mb-4 mx-8 ">
+                <div className=" mx-1">
+                  <ButtonFavoris
+                    fill={'#EEEE'}
+                    onClick={() => checkedFavoris(item.id)}
+                  />
+                </div>
+                <div className=" mx-1">
+                  <ButtonMessage fill="" />
+                </div>
+              </div>
+            </Card>
+          )
+        )
+      ) : (
+        <p>{error}</p>
+      )}
+    </ContentCard>
     </div>
   );
 };

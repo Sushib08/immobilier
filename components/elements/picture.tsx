@@ -4,9 +4,10 @@ import { FC } from "react";
 
 interface IPicture {
   source: string;
+  alt : string;
 }
 
-const Picture: FC <IPicture> = ({ source, ...props }) => {
+const Picture: FC <IPicture> = ({ alt, source, ...props }) => {
   return (
     <div>
       <Image
@@ -14,7 +15,7 @@ const Picture: FC <IPicture> = ({ source, ...props }) => {
         src={source}
         height={320}
         width={340}
-        alt="houses"
+        alt={alt}
       />
     </div>
   );
