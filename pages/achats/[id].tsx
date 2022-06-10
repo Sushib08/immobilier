@@ -100,7 +100,7 @@ const AchatBohem: NextPage = () => {
       <main>
       <div>
       <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-        APPARTEMENT BOHEM
+        APPARTEMENT
       </Title>
       <Title />
       <Image
