@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC, Key, ReactChild, ReactFragment, ReactPortal } from "react";
 import { UrlObject } from "url";
-import IconHeart from "../../public/heart";
+import IconHeart from "../../../public/heart";
 
 interface Ilinks {
   liens: any;

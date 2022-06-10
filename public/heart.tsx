@@ -8,8 +8,8 @@ const IconHeart: FC<IIconHeart> = ({ fill }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25.446"
-      height="25.024"
+      width="20"
+      height="20"
       viewBox="0 0 17.446 16.024"
     >
       <path

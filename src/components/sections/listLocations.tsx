@@ -102,78 +102,77 @@ interface IList {
 let data: IList[] = [
   {
     id: 1,
-    title: "Maison 3 pièces",
+    title: "Maison 5 pièces",
     localisation: "Lyon",
-    price: "300 000 €",
-    path: "/image/ventes/maison1.jpg",
-    details: "/ventes/maisonVacances",
+    price: "1 500 €",
+    path: "/image/locations/maison1.jpg",
+    details: "/location/maisonFamille",
     stateFavoris: false,
   },
   {
     id: 2,
     title: "Appart 3 pièces",
     localisation: "Roanne",
-    price: "200 000€",
-    path: "/image/ventes/apart1.jpg",
-    details: "/ventes/appartCalme",
+    price: "500€",
+    path: "/image/locations/apart1.jpg",
+    details: "/location/appart",
     stateFavoris: false,
   },
   {
     id: 3,
     title: "Studio",
     localisation: "Toulon",
-    price: "150 000€",
-    path: "/image/ventes/studio1.jpg",
-    details: "/ventes/studio",
+    price: "400€",
+    path: "/image/locations/studio1.jpg",
+    details: "/location/studio",
     stateFavoris: false,
   },
   {
     id: 4,
-    title: "Maison 5 pièces",
+    title: "Maison 4 pièces",
     localisation: "Paris",
-    price: "350 000€",
-    path: "/image/ventes/maison2.jpg",
-    details: "/ventes/maisonAgreable",
+    price: "1 300€",
+    path: "/image/locations/maison2.jpg",
+    details: "/location/maisonModeste",
     stateFavoris: false,
   },
   {
     id: 5,
-    title: "Maison 4 pièces",
+    title: "Maison 3 pièces",
     localisation: "Bordeaux",
-    price: "400 000€",
-    path: "/image/ventes/maison3.jpg",
-    details: "/ventes/maisonCalifornienne",
+    price: "1 000€",
+    path: "/image/locations/maison3.jpg",
+    details: "/location/maisonMontagne",
     stateFavoris: false,
   },
   {
     id: 6,
     title: "Maison 4 pièces",
     localisation: "Paris",
-    price: "450 000€",
-    path: "/image/ventes/maison4.jpg",
-    details: "/ventes/maisonMontagne",
+    price: "2 000€",
+    path: "/image/locations/maison4.jpg",
+    details: "/location/maisonHollywoodienne",
     stateFavoris: false,
   },
   {
     id: 7,
     title: "Maison 3 pièces",
     localisation: "Saint-Etienne",
-    price: "250 500€",
-    path: "/image/ventes/maison5.jpg",
-    details: "/ventes/maisonAnglaise",
+    price: "700€",
+    path: "/image/locations/maison5.jpg",
+    details: "/location/maisonModerne",
     stateFavoris: false,
   },
   {
     id: 8,
     title: "Maison 5 pièces",
-    localisation: "Nantes",
-    price: "400 000€",
-    path: "/image/ventes/maison6.jpg",
-    details: "/ventes/Loft",
+    localisation: "Sanary",
+    price: "950€",
+    path: "/image/locations/maison6.jpg",
+    details: "/location/maisonPlage",
     stateFavoris: false,
   },
 ];
-
 
 interface IArea {
   id: number;
@@ -191,7 +190,7 @@ interface ICards {
   checkedFavoris: any;
 }
 
-const Ventes: FC<ICards> = ({
+const Locations: FC<ICards> = ({
   lodgment,
   ...props
 }) => {
@@ -226,7 +225,7 @@ const Ventes: FC<ICards> = ({
   return (
     <div className="my-12" {...props}>
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
-        <Title>VENTES</Title>
+        <Title>LOCATIONS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard {...props}>
@@ -235,7 +234,7 @@ const Ventes: FC<ICards> = ({
           (lodgment: IArea) => (
             <Card key={lodgment.id}>
               <div className={styles.content}>
-                <Picture source={lodgment.path} />
+                <Picture source={lodgment.path} alt={""} />
                 <div className={styles.btn}>
                   <LittleViewport
                     link={lodgment.details}
@@ -271,4 +270,4 @@ const Ventes: FC<ICards> = ({
   );
 };
 
-export default Ventes;
+export default Locations;

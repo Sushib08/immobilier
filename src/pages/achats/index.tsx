@@ -37,7 +37,7 @@ const Achats: NextPage<IAchat> = (props) => {
         <title>ORTHIMMO - Achats</title>
       </Head>
 
-      <Header className="liens" />
+      <Header className="" />
 
       <main>
         <ListAchats allDocsData={allDocsData} />

@@ -1,15 +1,16 @@
 import { FC, MouseEventHandler } from "react";
 import styled from "styled-components";
-import IconHeart from "../../public/heart";
+import IconHeart from "../../../public/heart";
 
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #c2ad74;
-  border-radius: 10px;
-  height: 55px;
-  width: 55px;
+  // border: 0.01em solid #c2ad74;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
 `;
 
 interface IButton {
