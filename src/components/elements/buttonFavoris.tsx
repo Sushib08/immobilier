@@ -17,11 +17,13 @@ interface IButton {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   background?: string;
   fill: string;
+  tw?: string;
 }
 
 const ButtonFavoris: FC<IButton> = ({
   onClick,
   fill,
+  tw,
   background,
   ...props
 }) => {
@@ -29,6 +31,7 @@ const ButtonFavoris: FC<IButton> = ({
     <Button
       onClick={onClick}
       style={{ backgroundColor: `${background}` }}
+      className={tw}
       {...props}
     >
       <IconHeart fill={fill} />
