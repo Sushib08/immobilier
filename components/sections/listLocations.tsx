@@ -7,8 +7,8 @@ import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
 import error from "next/error";
-import { getSortedDocsData } from "../../lib/locations";
 import NavLink from "../elements/NavLinks";
+import { getSortedDocsData } from "../../lib/locations";
 
 const Input = styled.input`
   padding: 5px;

@@ -20,29 +20,29 @@ const Input = styled.input`
   margin-right: 50px;
 
   :hover {
-  border: 1px solid #c2ad74;
-}
+    border: 1px solid #c2ad74;
+  }
 `;
 
-interface ILocations {
+interface ILocation {
   allDocsData: ReturnType<typeof getSortedDocsData>;
 }
 
-const Locations: NextPage<ILocations> = (props) => {
+const Locations: NextPage<ILocation> = (props) => {
   const { allDocsData } = props;
   return (
     <div>
       <Head>
-        <title>ORTHIMMO - Locations</title>
+        <title>ORTHIMMO - Achats</title>
       </Head>
 
-        <Header className="liens" />
+      <Header className="liens" />
 
       <main>
         <ListLocations allDocsData={allDocsData} />
       </main>
 
-        <Footer className="" />
+      <Footer className="" />
     </div>
   );
 };
