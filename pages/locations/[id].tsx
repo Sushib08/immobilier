@@ -1,12 +1,13 @@
-import type { NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
 import Header from "../../components/sections/header";
 import Footer from "../../components/sections/footer";
 import styled from "styled-components";
 import ButtonMessage from "../../components/elements/buttonMessage";
 import ButtonFavoris from "../../components/elements/buttonFavoris";
+import { getAllDocIds, getDocData } from "../../lib/locations";
+import { ReturnTypeAsync } from "../../common/interface";
 
 const Description = styled.div`
   display: flex;
@@ -82,38 +83,42 @@ const OtherDetails = styled.div`
 `;
 
 
-const LocationMaisonModerne: NextPage = () => {
+interface IPost {
+    postData: ReturnTypeAsync<typeof getDocData>;
+  }
+
+const Locations: NextPage<IPost> = (props) => {
+  const {postData} = props;
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>ORTHIMMO - Maison Moderne</title>
+        <title>Orthimmo - {postData.title}</title>
       </Head>
 
-      <Header className={styles.liens} />
+      <Header className={""} />
 
-      <main className={styles.main}>
+      <main>
       <div>
       <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-        MAISON MODERNE
+      {postData.title}
       </Title>
       <Title />
       <Image
         className=" rounded-[50px] bg-center"
         priority
-        src="/image/locations/maison5.jpg"
-        objectFit="cover"
+        src={`/image/locations/${postData.imgPath}`}
         width={1100}
         height={600}
-        alt="houses"
+        alt={postData.title}
       />
       <Description>
         <Details>
           <LodgmentTitle className=" text-4xl font-sans font-bold mb-2">
-            Maison 3 pièces
+           {postData.room}
           </LodgmentTitle>
-          <Dimension>100 m2</Dimension>
-          <City>Saint-Etienne</City>
-          <Price>Prix : 700€</Price>
+          <Dimension> {postData.superficie}</Dimension>
+          <City> {postData.city}</City>
+          <Price>Prix : {postData.price}</Price>
           <div className=" flex justify-center">
             <div className=" mx-1">
               <ButtonFavoris fill="red" />
@@ -148,4 +153,23 @@ const LocationMaisonModerne: NextPage = () => {
   );
 };
 
-export default LocationMaisonModerne;
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = getAllDocIds();
+    return {
+      paths,
+      fallback: false
+    };
+  };
+  
+  export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const postData = await getDocData(params!.id as string);
+    return {
+      props: {
+        postData
+      }
+    };
+  };
+  
+//   Post.getLayout = getLayout;
+
+export default Locations;

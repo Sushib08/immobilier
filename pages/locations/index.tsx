@@ -2,9 +2,9 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
 import Header from "../../components/sections/header";
-import ListAchats from "../../components/sections/listAchats";
+import ListLocations from "../../components/sections/listLocations";
 import Footer from "../../components/sections/footer";
-import { getSortedDocsData } from "../../lib/achats";
+import { getSortedDocsData } from "../../lib/locations";
 
 const Input = styled.input`
   padding: 5px;
@@ -20,29 +20,29 @@ const Input = styled.input`
   margin-right: 50px;
 
   :hover {
-    border: 1px solid #c2ad74;
-  }
+  border: 1px solid #c2ad74;
+}
 `;
 
-interface IAchat {
+interface ILocations {
   allDocsData: ReturnType<typeof getSortedDocsData>;
 }
 
-const Achats: NextPage<IAchat> = (props) => {
+const Locations: NextPage<ILocations> = (props) => {
   const { allDocsData } = props;
   return (
     <div>
       <Head>
-        <title>ORTHIMMO - Achats</title>
+        <title>ORTHIMMO - Locations</title>
       </Head>
 
-      <Header className="liens" />
+        <Header className="liens" />
 
       <main>
-        <ListAchats allDocsData={allDocsData} />
+        <ListLocations allDocsData={allDocsData} />
       </main>
 
-      <Footer className="" />
+        <Footer className="" />
     </div>
   );
 };
@@ -56,4 +56,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Achats;
+export default Locations;

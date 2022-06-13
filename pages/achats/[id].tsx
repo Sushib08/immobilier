@@ -1,13 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
-// import styles from "../../styles/Home.module"
 import Header from "../../components/sections/header";
 import Footer from "../../components/sections/footer";
 import styled from "styled-components";
 import ButtonMessage from "../../components/elements/buttonMessage";
 import ButtonFavoris from "../../components/elements/buttonFavoris";
-import { getAllDocIds, getDocData } from "../../lib/posts";
+import { getAllDocIds, getDocData } from "../../lib/achats";
 import { ReturnTypeAsync } from "../../common/interface";
 
 const Description = styled.div`
@@ -88,11 +87,12 @@ interface IPost {
     postData: ReturnTypeAsync<typeof getDocData>;
   }
 
-const AchatBohem: NextPage = () => {
+const Achats: NextPage<IPost> = (props) => {
+  const {postData} = props;
   return (
     <div>
       <Head>
-        <title>ORTHIMMO - Appart Bohem</title>
+        <title>Orthimmo - {postData.title}</title>
       </Head>
 
       <Header className={""} />
@@ -100,26 +100,25 @@ const AchatBohem: NextPage = () => {
       <main>
       <div>
       <Title className=" text-5xl mb-6 text-[#C2AD74] font-bold">
-        APPARTEMENT BOHEM
+      {postData.title}
       </Title>
       <Title />
       <Image
         className=" rounded-[50px] bg-center"
         priority
-        src="/image/achats/apart1.jpg"
-        objectFit="cover"
+        src={`/image/achats/${postData.imgPath}`}
         width={1100}
         height={600}
-        alt="houses"
+        alt={postData.title}
       />
       <Description>
         <Details>
           <LodgmentTitle className=" text-4xl font-sans font-bold mb-2">
-           Appart 3 pièces
+           {postData.room}
           </LodgmentTitle>
-          <Dimension>60 m2</Dimension>
-          <City>Lyon</City>
-          <Price>Prix : 200 000€</Price>
+          <Dimension> {postData.superficie}</Dimension>
+          <City> {postData.city}</City>
+          <Price>Prix : {postData.price}</Price>
           <div className=" flex justify-center">
             <div className=" mx-1">
               <ButtonFavoris fill="red" />
@@ -173,4 +172,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   
 //   Post.getLayout = getLayout;
 
-export default AchatBohem;
+export default Achats;

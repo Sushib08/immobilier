@@ -7,7 +7,8 @@ import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
 import error from "next/error";
-import { getSortedDocsData } from "../../lib/posts";
+import { getSortedDocsData } from "../../lib/achats";
+import NavLink from "../elements/NavLinks";
 
 const Input = styled.input`
   padding: 5px;
@@ -88,7 +89,6 @@ const Localisation = styled.h3`
   color: #707070;
 `;
 
-
 let data = [
   {
     id: 1,
@@ -164,15 +164,13 @@ let data = [
   },
 ];
 
-
-interface IAllDocs{
-  allDocsData : ReturnType<typeof getSortedDocsData>;
+interface IAllDocs {
+  allDocsData: ReturnType<typeof getSortedDocsData>;
 }
 
 const Achats: FC<IAllDocs> = (props) => {
   const { allDocsData } = props;
-  const [searchParams, setSearchParams] =
-    React.useState(allDocsData);
+  const [searchParams, setSearchParams] = React.useState(allDocsData);
   const [name, setName] = React.useState("");
 
   const filter = (e: { target: { value: any } }) => {
@@ -206,12 +204,16 @@ const Achats: FC<IAllDocs> = (props) => {
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard {...props}>
-      {searchParams && searchParams.length > 0 ? (
-        searchParams.map(
-          (item) => (
+        {searchParams && searchParams.length > 0 ? (
+          searchParams.map((item) => (
             <Card key={item.id}>
               <div className={styles.content}>
-                <Picture source={`/image/achats/${item.imgPath}`} alt={item.title} />
+                <NavLink href={`/achats/${item.id}`}>
+                  <Picture
+                    source={`/image/achats/${item.imgPath}`}
+                    alt={item.title}
+                  />
+                </NavLink>
                 <div className={styles.btn}>
                   {/* <LittleViewport
                     link={item.path}
@@ -228,7 +230,7 @@ const Achats: FC<IAllDocs> = (props) => {
               <div className=" flex justify-end mb-4 mx-8 ">
                 <div className=" mx-1">
                   <ButtonFavoris
-                    fill={'#EEEE'}
+                    fill={"#EEEE"}
                     onClick={() => checkedFavoris(item.id)}
                   />
                 </div>
@@ -237,12 +239,11 @@ const Achats: FC<IAllDocs> = (props) => {
                 </div>
               </div>
             </Card>
-          )
-        )
-      ) : (
-        <p>{error}</p>
-      )}
-    </ContentCard>
+          ))
+        ) : (
+          <p>{error}</p>
+        )}
+      </ContentCard>
     </div>
   );
 };

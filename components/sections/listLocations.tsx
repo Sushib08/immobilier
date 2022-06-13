@@ -7,6 +7,8 @@ import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
 import error from "next/error";
+import { getSortedDocsData } from "../../lib/locations";
+import NavLink from "../elements/NavLinks";
 
 const Input = styled.input`
   padding: 5px;
@@ -87,26 +89,14 @@ const Localisation = styled.h3`
   color: #707070;
 `;
 
-
-
-interface IList {
-  id: number;
-  title: string;
-  localisation: string;
-  price: string;
-  path: string;
-  details: string;
-  stateFavoris: boolean;
-}
-
-let data: IList[] = [
+let data = [
   {
     id: 1,
     title: "Maison 5 pièces",
     localisation: "Lyon",
     price: "1 500 €",
     path: "/image/locations/maison1.jpg",
-    details: "/location/maisonFamille",
+    details: "/locations/maisonFamille",
     stateFavoris: false,
   },
   {
@@ -115,7 +105,7 @@ let data: IList[] = [
     localisation: "Roanne",
     price: "500€",
     path: "/image/locations/apart1.jpg",
-    details: "/location/appart",
+    details: "/locations/appart",
     stateFavoris: false,
   },
   {
@@ -124,7 +114,7 @@ let data: IList[] = [
     localisation: "Toulon",
     price: "400€",
     path: "/image/locations/studio1.jpg",
-    details: "/location/studio",
+    details: "/locations/studio",
     stateFavoris: false,
   },
   {
@@ -133,7 +123,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "1 300€",
     path: "/image/locations/maison2.jpg",
-    details: "/location/maisonModeste",
+    details: "/locations/maisonModeste",
     stateFavoris: false,
   },
   {
@@ -142,7 +132,7 @@ let data: IList[] = [
     localisation: "Bordeaux",
     price: "1 000€",
     path: "/image/locations/maison3.jpg",
-    details: "/location/maisonMontagne",
+    details: "/locations/maisonMontagne",
     stateFavoris: false,
   },
   {
@@ -151,7 +141,7 @@ let data: IList[] = [
     localisation: "Paris",
     price: "2 000€",
     path: "/image/locations/maison4.jpg",
-    details: "/location/maisonHollywoodienne",
+    details: "/locations/maisonHollywoodienne",
     stateFavoris: false,
   },
   {
@@ -160,7 +150,7 @@ let data: IList[] = [
     localisation: "Saint-Etienne",
     price: "700€",
     path: "/image/locations/maison5.jpg",
-    details: "/location/maisonModerne",
+    details: "/locations/maisonModerne",
     stateFavoris: false,
   },
   {
@@ -169,54 +159,39 @@ let data: IList[] = [
     localisation: "Sanary",
     price: "950€",
     path: "/image/locations/maison6.jpg",
-    details: "/location/maisonPlage",
+    details: "/locations/maisonPlage",
     stateFavoris: false,
   },
 ];
 
-interface IArea {
-  id: number;
-  price: string;
-  localisation: string;
-  stateFavoris: boolean;
-  details: string;
-  path:string;
-  title: string;
+interface IAllDocs {
+  allDocsData: ReturnType<typeof getSortedDocsData>;
 }
 
-interface ICards {
-  searchParams: any;
-  lodgment: IArea[];
-  checkedFavoris: any;
-}
-
-const Locations: FC<ICards> = ({
-  lodgment,
-  ...props
-}) => {
-  const [searchParams, setSearchParams]: [IList[], (items: IList[]) => void] =
-    React.useState(data);
-  const [name, setName]: [string, (name: string) => void] = React.useState("");
+const Locations: FC<IAllDocs> = (props) => {
+  const { allDocsData } = props;
+  const [searchParams, setSearchParams] = React.useState(allDocsData);
+  const [name, setName] = React.useState("");
 
   const filter = (e: { target: { value: any } }) => {
     const keyword = e.target.value;
 
     if (keyword !== "") {
-      const results = data.filter((item) => {
+      const results = allDocsData.filter((item) => {
         return item.title.toLowerCase().includes(keyword.toLowerCase());
       });
       setSearchParams(results);
     } else {
-      setSearchParams(data);
+      setSearchParams(allDocsData);
     }
 
     setName(keyword);
   };
 
-  const checkedFavoris = (id: number) => {
+  const checkedFavoris = (id: string) => {
     const foundFavoris = searchParams.find((item) => item.id === id);
     if (foundFavoris) {
-      foundFavoris.stateFavoris = !foundFavoris.stateFavoris;
+      // foundFavoris.stateFavoris = !foundFavoris.stateFavoris;
       setSearchParams([...searchParams]);
       console.log(foundFavoris);
     }
@@ -229,30 +204,34 @@ const Locations: FC<ICards> = ({
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard {...props}>
-      {searchParams && searchParams.length > 0 ? (
-        searchParams.map(
-          (lodgment: IArea) => (
-            <Card key={lodgment.id}>
+        {searchParams && searchParams.length > 0 ? (
+          searchParams.map((item) => (
+            <Card key={item.id}>
               <div className={styles.content}>
-                <Picture source={lodgment.path} />
+                <NavLink href={`/locations/${item.id}`}>
+                  <Picture
+                    source={`/image/locations/${item.imgPath}`}
+                    alt={item.title}
+                  />
+                </NavLink>
                 <div className={styles.btn}>
-                  <LittleViewport
-                    link={lodgment.details}
+                  {/* <LittleViewport
+                    link={item.path}
                     text={"Viewport"}
                     className="little"
-                  />
+                  /> */}
                 </div>
               </div>
               <Description>
-                <LodgmentTitle>{lodgment.title}</LodgmentTitle>
-                <Price>{lodgment.price}</Price>
+                <LodgmentTitle>{item.title}</LodgmentTitle>
+                <Price>{item.price}</Price>
               </Description>
-              <Localisation>{lodgment.localisation}</Localisation>
+              <Localisation>{item.city}</Localisation>
               <div className=" flex justify-end mb-4 mx-8 ">
                 <div className=" mx-1">
                   <ButtonFavoris
-                    fill={lodgment.stateFavoris ? "red" : "#ddd"}
-                    onClick={() => checkedFavoris(lodgment.id)}
+                    fill={"#EEEE"}
+                    onClick={() => checkedFavoris(item.id)}
                   />
                 </div>
                 <div className=" mx-1">
@@ -260,12 +239,11 @@ const Locations: FC<ICards> = ({
                 </div>
               </div>
             </Card>
-          )
-        )
-      ) : (
-        <p>{error}</p>
-      )}
-    </ContentCard>
+          ))
+        ) : (
+          <p>{error}</p>
+        )}
+      </ContentCard>
     </div>
   );
 };
