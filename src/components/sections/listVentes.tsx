@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import React from "react";
 import Picture from "../elements/picture";
 import LittleViewport from "../elements/littleViewport";

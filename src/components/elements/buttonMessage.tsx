@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 import styled from "styled-components"; 
-import IconMessage from "../../public/message";
+import IconMessage from "../../../public/message";
+
 
 const Button = styled.button`
   display: flex;

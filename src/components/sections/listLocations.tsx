@@ -1,13 +1,13 @@
 import { FC } from "react";
 import styled from "styled-components";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import React from "react";
 import Picture from "../elements/picture";
 import LittleViewport from "../elements/littleViewport";
 import ButtonFavoris from "../elements/buttonFavoris";
 import ButtonMessage from "../elements/buttonMessage";
 import error from "next/error";
-import { getSortedDocsData } from "../../lib/achats";
+import { getSortedDocsData } from "../../lib/locations";
 import NavLink from "../elements/NavLinks";
 
 const Input = styled.input`
@@ -168,7 +168,7 @@ interface IAllDocs {
   allDocsData: ReturnType<typeof getSortedDocsData>;
 }
 
-const Achats: FC<IAllDocs> = (props) => {
+const Locations: FC<IAllDocs> = (props) => {
   const { allDocsData } = props;
   const [searchParams, setSearchParams] = React.useState(allDocsData);
   const [name, setName] = React.useState("");
@@ -200,7 +200,7 @@ const Achats: FC<IAllDocs> = (props) => {
   return (
     <div className="my-12" {...props}>
       <div className="flex flex-col items-center md:flex-row justify-between mx-24">
-        <Title>ACHATS</Title>
+        <Title>LOCATIONS</Title>
         <Input placeholder="Rechercher..." value={name} onChange={filter} />
       </div>
       <ContentCard {...props}>
@@ -208,9 +208,9 @@ const Achats: FC<IAllDocs> = (props) => {
           searchParams.map((item) => (
             <Card key={item.id}>
               <div className={styles.content}>
-                <NavLink href={`/achats/${item.id}`}>
+                <NavLink href={`/locations/${item.id}`}>
                   <Picture
-                    source={`/image/achats/${item.imgPath}`}
+                    source={`/image/locations/${item.imgPath}`}
                     alt={item.title}
                   />
                 </NavLink>
@@ -248,4 +248,4 @@ const Achats: FC<IAllDocs> = (props) => {
   );
 };
 
-export default Achats;
+export default Locations;

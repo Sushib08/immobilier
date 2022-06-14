@@ -1,11 +1,17 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import Header from "../components/sections/header";
 import Footer from "../components/sections/footer";
-import ContentHistory from "../components/sections/contentHistory";
+import styled from "styled-components";
+import ContentIndex from "../components/sections/contentIndex";
 
-const History: NextPage = () => {
+const Description = styled.p`
+  margin-top: 10px;
+  color: #707070;
+`;
+
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +21,7 @@ const History: NextPage = () => {
       <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <ContentHistory />
+        <ContentIndex />
       </main>
 
       <Footer className="" />
@@ -23,4 +29,4 @@ const History: NextPage = () => {
   );
 };
 
-export default History;
+export default Home;

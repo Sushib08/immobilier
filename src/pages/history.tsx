@@ -1,28 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import Header from "../components/sections/header";
 import Footer from "../components/sections/footer";
-import styled from "styled-components";
-import ContentAgences from "../components/sections/contentAgences";
+import ContentHistory from "../components/sections/contentHistory";
 
-const Description = styled.p`
-  :hover {
-    text-shadow: 6px 6px 4px #707070;
-  }
-`;
-
-const Home: NextPage = () => {
+const History: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ORTHIMMO - Nos agences</title>
+        <title>ORTHIMMO</title>
       </Head>
 
       <Header className={styles.liens} />
 
       <main className={styles.main}>
-        <ContentAgences />
+        <ContentHistory />
       </main>
 
       <Footer className="" />
@@ -30,4 +23,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default History;

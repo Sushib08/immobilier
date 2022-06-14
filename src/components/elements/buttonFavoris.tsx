@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 import styled from "styled-components";
-import IconHeart from "../../public/heart";
+import IconHeart from "../../../public/heart";
+
 
 const Button = styled.button`
   display: flex;
