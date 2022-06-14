@@ -33,7 +33,7 @@ const Locations: NextPage<ILocation> = (props) => {
   return (
     <div>
       <Head>
-        <title>ORTHIMMO - Achats</title>
+        <title>ORTHIMMO - Locations</title>
       </Head>
 
       <Header className="liens" />
